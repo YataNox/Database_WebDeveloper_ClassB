@@ -32,9 +32,15 @@
 -- 기본키 : booknum
 
 CREATE TABLE booklist(
-	booknum varchar2(5) primary key,
-	subject varchar2(30) constraint no_empty not null,
+	booknum varchar2(5) not null,
+	subject varchar2(30) NOT NULL,
 	makeyear NUMBER(4),
 	inprice NUMBER(6),
-	outprice NUMBER(4)
-)
+	outprice NUMBER(4), -- 필드명 옆에 현재 필드에만 적용하는 제약조건을 필드 수준의 제약이라고 합니다.
+	
+	-- 아래는 테이블 수준의 제약조건입니다.
+	constraint booknum_pk primary key(booknum)
+	-- constraint : 테이블 수준의 제약조건을 지정하는 키워드
+	-- booknum_pk : 테이블 외부에서 현재 제약조건을 컨트롤 하기 위한 제약조건의 고유이름
+	-- primary key(booknum) : 기본키로 booknum을 지정하겠다는 뜻입니다.
+);
