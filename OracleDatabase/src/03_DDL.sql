@@ -31,7 +31,7 @@
 -- 제약조건 : booknum(not null), subject(not null), makeyear(), inprice(), outprice()
 -- 기본키 : booknum
 
-CREATE TABLE 도서목록(
+CREATE TABLE booklist(
 	booknum varchar2(5) primary key,
 	subject varchar2(30) constraint no_empty not null,
 	makeyear NUMBER(4),
