@@ -32,9 +32,9 @@
 -- 기본키 : booknum
 
 CREATE TABLE 도서목록(
-	booknum char(5) primary key,
-	subject char(30) constraint not null,
-	makeyear int(4),
-	inprice int(6),
-	outprice int(4)
+	booknum varchar2(5) primary key,
+	subject varchar2(30) constraint no_empty not null,
+	makeyear NUMBER(4),
+	inprice NUMBER(6),
+	outprice NUMBER(4)
 )
