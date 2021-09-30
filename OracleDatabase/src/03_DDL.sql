@@ -65,3 +65,42 @@ from BOOKLIST; -- 테이블의 내용 전체를 조회하는 명령
 -- - 관계형 데이터베이스에서 테이블간에 관계를 정의하기 위해 기본키를 다른 테이블의 외래키로
 -- 복사하는 경우 외래키가 생성됩니다. - 참조 무결성 제약 옵션이 생성
 
+
+-- 테이블 생성 2
+-- 테이블 이름 : MemberList(회원리스트)
+-- 필드 : memberNum, memberName, Phone, Birth, Bpoint
+-- 데이터 형식 : memberNum : VARCHAR2(5), memberName : VARCHAR2(12),
+-- Phone : VARCHAR2(13), Birth : DATE, Bpoint : NUMBER(6)
+-- 제약 조건 : memberNum, memberName, Phone 세 개의 필드 NOT NULL - 필드 레벨로 설정
+-- memberNum : Primary Key - 테이블 레벨로 설정
+CREATE TABLE MemberList(
+	memberNum VARCHAR2(5) NOT NULL,
+	memberName VARCHAR2(12) NOT NULL,
+	Phone VARCHAR2(13) NOT NULL,
+	Birth DATE,
+	joindate date default sysdate, -- sysdate : 오늘 날짜를 표시하는 오라클의 키워드
+	Bpoint NUMBER(6) default 0, -- 필드 기본 값 추가
+	
+	CONSTRAINT memberList_pk PRIMARY KEY(memberNum)
+);
+
+alter table memberlist add joindate date default sysdate; 
+select * from memberlist;
+drop table memberlist;
+
+-- 테이블 생성 3
+-- 테이블 이름 : rentlist
+-- 필드 : rent_date(date), indexk(number(3)), booknum(varchar2(5)),
+-- membernum(varchar2(5)), discount(number(6))
+-- 제약조건 : booknum, membernum :not null
+-- 기본 값 : rent_date : 오늘 날짜
+
+create table rentlist(
+	rent_date date default sysdate,
+	indexk number(3),
+	booknum varchar2(5) not null,
+	membernum varchar2(5) not null,
+	discount number(6),
+	
+	constraint rent_pk primary key(booknum)
+);
