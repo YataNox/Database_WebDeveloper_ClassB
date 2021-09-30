@@ -95,7 +95,7 @@ drop table memberlist;
 -- 제약조건 : booknum, membernum :not null
 -- 기본 값 : rent_date : 오늘 날짜
 
-create table rentlist(
+CREATE TABLE rentlist(
 	rent_date date default sysdate, -- 대여 날짜
 	indexk number(3) not null, -- 대여 순번 : 1부터 시작해서 늘어나는 숫자이고 하루가 지나면 reset
 	booknum varchar2(5) not null, -- 대여해간 도서번호
