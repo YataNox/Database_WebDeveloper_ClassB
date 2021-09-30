@@ -96,11 +96,19 @@ drop table memberlist;
 -- 기본 값 : rent_date : 오늘 날짜
 
 create table rentlist(
-	rent_date date default sysdate,
-	indexk number(3),
-	booknum varchar2(5) not null,
-	membernum varchar2(5) not null,
-	discount number(6),
+	rent_date date default sysdate, -- 대여 날짜
+	indexk number(3) not null, -- 대여 순번 : 1부터 시작해서 늘어나는 숫자이고 하루가 지나면 reset
+	booknum varchar2(5) not null, -- 대여해간 도서번호
+	membernum varchar2(5) not null, -- 대여한 회원의 회원 번호
+	discount number(6), -- 할인 금액
 	
-	constraint rent_pk primary key(booknum)
+	-- rent_date와 indexk를 조합하여 기본키(rent_pk)를생성합니다.
+	constraint rent_pk primary key(rent_date, indexk),
+	constraint fk1 foreign key(booknum) references booklist(booknum),
+	constraint fk2 foreign key(membernum) references memberlist(membernum)
 );
+-- rent_date와 indexk를 조합하여 기본키(rent_pk)를생성합니다. 두 개의 필드가 조합되어 기본키로 지정될
+-- 수 있습니다.
+
+-- rentlist 테이블의 booknum은 booklist 테이블의 booknum을 참조하는 외래키로 지정(제약조건 이름 fk1)
+-- rentlist 테이블의 membernum은 memberlist 테이블의 membernum을 참조하는 외래키로 지정(제약조건 이름 fk2)
