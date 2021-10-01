@@ -112,3 +112,39 @@ alter table rentlist add constraint rent_pk primary key(rentdate, numseq);
 alter table rentlist add constraint fk1 foreign key (booknum) references booklist(booknum);
 alter table rentlist add constraint fk2 foreign key (membernum) references memberlist(membernum);
 select * from RENTLIST;
+
+
+
+
+
+-- 테이블 생성 Ex
+-- 테이블 명 orders
+-- 필드 : order_id number(12,0) order_date date
+-- order_mode varchar2(8) customer_id number(6,0)
+-- order_status number(2,0) order_total number(8,2)
+-- sales_rep_idnumber(6,0) promotion_id number(6,0)
+-- 제약 사항 : 기본키는 order_id - 테이블 레벨
+-- order_mode에는 'direct', 'online'만 입력 가능 - 테이블 레벨
+-- order_total의 디폴트 값은 0 - 필드레벨
+
+CREATE TABLE ORDERS1(
+	ORDER_ID NUMBER(12,0),
+	ORDER_DATE DATE,
+	ORDER_MODE VARCHAR2(8),
+	CUSTOMER_ID NUMBER(6,0),
+	ORDER_STATUS NUMBER(2,0),
+	ORDER_TOTAL NUMBER(8,2) DEFAULT 0,
+	SALES_REP_ID NUMBER(6,0),
+	PROMOTION_ID NUMBER(6,0),
+	
+	CONSTRAINT ORDER_PK PRIMARY KEY(ORDER_ID),
+	CONSTRAINT CHK_MODE CHECK(ORDER_MODE IN('direct', 'online'))
+);
+
+-- 테이블 수정
+-- customer_id 필드명을 customer_number로 수정
+alter table orders1 rename column customer_id to customer_number;
+-- Promotion_id 값은 10000~99999 사이의 값만 저장 가능
+-- check( promotion_id between 10000 and 99999);
+alter table orders1 add constraint pro_check check( promotion_id between 10000 and 99999);
+
