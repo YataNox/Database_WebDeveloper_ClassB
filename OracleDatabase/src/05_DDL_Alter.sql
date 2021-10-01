@@ -66,3 +66,8 @@ alter table booklist drop column grade;
 
 -- memberlist에 나이(age)필드 제거
 alter table memberlist drop column age;
+
+-- 다음 항목을 위해 삭제됐던 필드들 다시 생성
+alter table booklist add grade varchar(15);
+alter table memberlist add gender varchar2(3);
+alter table memberlist add age number(2);
