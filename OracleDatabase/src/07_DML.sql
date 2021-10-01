@@ -31,3 +31,48 @@ create table exam01(
 
 -- 첫 번째 방식의 레코드 추가
 insert into exam01(deptno, dname, loc) values(10, 'ACCOUNT','NEW YORK');
+
+-- 두 번째 방식의 레코드 추가
+insert into exam01 values (30, 'SALES', 'CHICHAGO');
+
+-- 두 가지 방법 모두 null 값을 입력할 수 있습니다.
+insert into exam01(deptno, dname) values(20, 'MARKETING'); -- 첫 번째 방법
+insert into exam01 values(40, 'OPERATION', NULL); -- 두 번째 방법
+
+select * from exam01;
+
+-- 두 가지 방법 중 자유롭게 선택하여서, booklist 테이블에 10개의 레코드를 추가해주세요.
+-- booknum은 시퀀스를 이용합니다.
+-- grade는 'all' '13' '18' 세 가지만 골라서 입력해주세요
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '좀비아이', 2020, 12000, 2500, 'all');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '오징어게임', 2021, 30000, 2500, 'all');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '늑대아이', 2012, 12000, 2500, 'all');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, 'A-특공대', 2010, 12000, 5500, '13');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '정직한후보', 2020, 11000, 2000, '13');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '모가디슈', 2021, 12000, 3500, '18');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '일곱해의 마지막', 2020, 12150, 2500, 'all');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '콘스탄틴', 2005, 15000, 2500, '18');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '씽', 2016, 11000, 3000, 'all');
+
+insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
+values(book_seq.nextVal, '소울', 2020, 11000, 3500, 'all');
+
+select * from BOOKLIST;
+delete from BOOKLIST;
