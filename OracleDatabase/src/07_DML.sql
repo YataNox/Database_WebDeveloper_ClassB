@@ -77,5 +77,33 @@ values(book_seq.nextVal, '소울', 2020, 11000, 3500, 'all');
 select * from MEMBERLIST;
 delete from BOOKLIST;
 
-insert into MEMBERLIST 
-VALUES(member_seq.nextVal, '추신수', '010-5656-1234', '84/07/07', 240, '20/10/01', 'M', 28);
+insert into MEMBERLIST(membernum, name, phone, birth, Bpoint, joindate, gender, age)
+VALUES(member_seq.nextVal, '추신수', '010-5656-1234', '84/07/07', 240, '20/10/01', 'M', 24);
+
+insert into MEMBERLIST(membernum, name, phone, birth, Bpoint, joindate, gender, age)
+VALUES(member_seq.nextVal, '류현진', '010-6464-5421', '87/03/25', 250, '21/1/11', 'M', 34);
+
+insert into MEMBERLIST(membernum, name, phone, birth, Bpoint, joindate, gender, age)
+VALUES(member_seq.nextVal, '손흥민', '010-1594-1451', '92/07/08', 110, '20/2/21', 'M', 29);
+
+insert into MEMBERLIST(membernum, name, phone, birth, Bpoint, joindate, gender, age)
+VALUES(member_seq.nextVal, '이청용', '010-6666-1234', '81/06/14', 440, '20/10/01', 'M', 36);
+
+insert into MEMBERLIST(membernum, name, phone, birth, Bpoint, joindate, gender, age)
+VALUES(member_seq.nextVal, '이영표', '010-1356-1234', '84/07/07', 240, '20/10/01', 'M', 31);
+
+insert into MEMBERLIST(membernum, name, phone, birth, Bpoint, joindate, gender, age)
+VALUES(member_seq.nextVal, '최지만', '010-7756-1224', '91/04/14', 240, '20/10/01', 'M', 29);
+
+select * from RENTLIST;
+-- rentlist 테이블도 rent_seq를 이용해서 10개의 데이터를 추가해주세요
+insert into rentlist values('2021/10/01', rent_seq.nextVal, 6, 2, 100);
+insert into rentlist values('2021/10/01', rent_seq.nextVal, 7, 3, 100);
+insert into rentlist values('2021/10/02', rent_seq.nextVal, 8, 4, 200);
+insert into rentlist values('2021/10/02', rent_seq.nextVal, 9, 5, 100);
+insert into rentlist values('2021/10/03', rent_seq.nextVal, 10, 6, 200);
+insert into rentlist values('2021/10/03', rent_seq.nextVal, 6, 6, 300);
+insert into rentlist values('2021/10/04', rent_seq.nextVal, 7, 7, 100);
+insert into rentlist values('2021/10/04', rent_seq.nextVal, 10, 8, 300);
+insert into rentlist values('2021/10/05', rent_seq.nextVal, 9, 9, 100);
+insert into rentlist values('2021/10/05', rent_seq.nextVal, 9, 10, 200);
