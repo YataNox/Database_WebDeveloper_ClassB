@@ -74,5 +74,8 @@ values(book_seq.nextVal, '씽', 2016, 11000, 3000, 'all');
 insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
 values(book_seq.nextVal, '소울', 2020, 11000, 3500, 'all');
 
-select * from BOOKLIST;
+select * from MEMBERLIST;
 delete from BOOKLIST;
+
+insert into MEMBERLIST 
+VALUES(member_seq.nextVal, '추신수', '010-5656-1234', '84/07/07', 240, '20/10/01', 'M', 28);

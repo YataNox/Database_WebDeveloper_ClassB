@@ -57,5 +57,3 @@ insert into memberlist(membernum, name, phone) values(book_seq.nextVal, '홍길�
 insert into memberlist(membernum, name, phone) values(book_seq.nextVal, '홍길남','010-5555-6666');
 insert into memberlist(membernum, name, phone) values(book_seq.nextVal, '홍길북','010-7777-8888');
 
-
-
