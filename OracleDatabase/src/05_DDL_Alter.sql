@@ -148,3 +148,12 @@ alter table orders1 rename column customer_id to customer_number;
 -- check( promotion_id between 10000 and 99999);
 alter table orders1 add constraint pro_check check( promotion_id between 10000 and 99999);
 
+-- 테이블의 복사
+create table orders2 as select * from orders1;
+-- as select 구분은 select 구문 이후에 다시 학습합니다.
+
+-- 테이블의 제거
+drop table orders2 purge; 
+-- purge는 생략 가능
+-- purge가 없이 삭제된 테이블은 나중에 휴지통과 같이 복구가 가능
+-- purge를 사용하면 완전 삭제
