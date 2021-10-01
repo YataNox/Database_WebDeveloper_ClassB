@@ -32,17 +32,27 @@ select * from booklist;
 alter table memberlist modify name varchar2(30);
 
 -- booklist의 booknum 필드를 number(5)로 자료형 변경
-alter table booklist modify booknum number(5);
+alter table booklist modify booknum number(5); -- 수정 실패
 -- memberlist의 membernum 필드를 number(5)로 자료형 변경
-alter table memberlist modify membernum number(5);
+alter table memberlist modify membernum number(5); -- 수정 실패
 -- rentlist의 booknm 필드를 number(5)로 자료형 변경
-alter table rentlist modify booknum number(5);
+alter table rentlist modify booknum number(5); -- 수정 실패 
 -- rentlist의 membernum 필드를 number(5)로 자료형 변경
-alter table rentlist modify membernum number(5);
-
+alter table rentlist modify membernum number(5); -- 수정 실패
 -- 위의 쿼리들은 외래키로 연결되어 참조되고, 참조하고 있는 필드들의 수정쿼리로 바로 실행이 불가능합니다.
 -- 가능하게 하려면, 외래키 제약 조건을 수정하여 없애버리고, 참조되는 필드와 참조하는 필드를 모두 수정한 후
 -- 외래키 제약 조건을 다시 설정합니다.
 -- alter 명령에 의해서 제약조건을 수정하는 명령을 아래에서 학습합니다.
 
+-- 3. 필드의 추가
+-- ALTER TABLE 테이블명 ADD 필드명 자료형
+
+-- booklist에 구매등급을 저장할 수 있는 grade 필드를 varcher(15)로 추가
+alter table booklist add grade varchar(15);
+
+-- memberlist에 성별(gender)필드를 varchar2(3)으로 추가
+alter table memberlist add gender varchar2(3);
+
+-- memberlist에 나이(age)필드를 number(2)로 추가
+alter table memberlist add age number(2);
 
