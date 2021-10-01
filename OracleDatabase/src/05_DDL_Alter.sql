@@ -88,3 +88,27 @@ alter table memberlist add constraint chk_gender check( gender in('F', 'M'));
 
 -- memberlist 테이블의 나이(age) 필드에 120살이 초과 되는 나이는 입력되지 못하게 제약 조건 추가
 alter table memberlist add constraint check_age check(age <= 120);
+
+-- 삭제 : ALTER TABLE 테이블명 DROP CONSTRAINT 제약조건명
+-- rentlist 테이블의 booknum에 걸려있는 외래키 제약조건 제거
+alter table rentlist drop constraint fk1;
+-- rentlist 테이블의 membernum에 걸려있는 외래키 제약조건 제거
+alter table rentlist drop constraint fk2;
+-- rentlist 테이블의 기본키 제거
+alter table rentlist drop constraint rent_pk;
+
+-- 위에서 실패했던 필드의 자료형 수정 재실행
+-- booklist의 booknum 필드를 number(5)로 자료형 변경
+alter table booklist modify booknum number(5); 
+-- memberlist의 membernum 필드를 number(5)로 자료형 변경
+alter table memberlist modify membernum number(5); 
+-- rentlist의 booknm 필드를 number(5)로 자료형 변경
+alter table rentlist modify booknum number(5); 
+-- rentlist의 membernum 필드를 number(5)로 자료형 변경
+alter table rentlist modify membernum number(5);
+
+-- 위에 삭제되었던 fk1, fk2, rent_pk 제약조건을 다시 설정하세요
+alter table rentlist add constraint rent_pk primary key(rentdate, numseq);
+alter table rentlist add constraint fk1 foreign key (booknum) references booklist(booknum);
+alter table rentlist add constraint fk2 foreign key (membernum) references memberlist(membernum);
+select * from RENTLIST;
