@@ -107,8 +107,14 @@ CREATE TABLE rentlist(
 	constraint fk1 foreign key(booknum) references booklist(booknum),
 	constraint fk2 foreign key(membernum) references memberlist(membernum)
 );
+
 -- rent_date와 indexk를 조합하여 기본키(rent_pk)를생성합니다. 두 개의 필드가 조합되어 기본키로 지정될
 -- 수 있습니다.
 
 -- rentlist 테이블의 booknum은 booklist 테이블의 booknum을 참조하는 외래키로 지정(제약조건 이름 fk1)
 -- rentlist 테이블의 membernum은 memberlist 테이블의 membernum을 참조하는 외래키로 지정(제약조건 이름 fk2)
+
+-- 각 테이블의 튜블 확인
+select * from BOOKLIST;
+select * from MEMBERLIST;
+select * from RENTLIST;
