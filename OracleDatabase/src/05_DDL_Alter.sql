@@ -56,3 +56,13 @@ alter table memberlist add gender varchar2(3);
 -- memberlist에 나이(age)필드를 number(2)로 추가
 alter table memberlist add age number(2);
 
+-- 4. 필드의 삭제
+-- ALTER TABLE 테이블 명 DROP COLUMN 필드명
+-- memberlist 테이블에서 성별 필드 제거
+alter table memberlist drop column gender;
+
+-- booklist에 grade 필드 제거
+alter table booklist drop column grade;
+
+-- memberlist에 나이(age)필드 제거
+alter table memberlist drop column age;
