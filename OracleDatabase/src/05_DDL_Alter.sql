@@ -71,3 +71,17 @@ alter table memberlist drop column age;
 alter table booklist add grade varchar(15);
 alter table memberlist add gender varchar2(3);
 alter table memberlist add age number(2);
+
+
+
+
+-- 5. 제약조건의 추가/제거
+-- ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건명 제약조건식
+-- 필드 LEVEL(수준)의 제약조건은 필드를 MODIFY하여서 같이 수정, 생성합니다.
+-- 테이블 LEVEL의 제약조건은 위의 명령 형식으로 제약조건 이름과 함께 추가합니다.
+
+-- memberlist 테이블의 성별(gender) 필드에 'F', 'M' 두글자만 입력되도록 제약조건을 추가하세요
+alter table memberlist add constraint chk_gender check( gender in('F', 'M'));
+-- in() 함수 : 괄호 안의 항목 중 하나에 해당하면 true가 리턴되는 함수입니다.
+-- 위의 내용은 check 함수의 의해 gender  필드에 들어갈 값이 in()함수 안의 항목 중 하나와 같다면
+-- 입력 허용하고, 아니면 불허하는 제약조건 입니다. 
