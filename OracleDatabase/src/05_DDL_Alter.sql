@@ -85,3 +85,6 @@ alter table memberlist add constraint chk_gender check( gender in('F', 'M'));
 -- in() 함수 : 괄호 안의 항목 중 하나에 해당하면 true가 리턴되는 함수입니다.
 -- 위의 내용은 check 함수의 의해 gender  필드에 들어갈 값이 in()함수 안의 항목 중 하나와 같다면
 -- 입력 허용하고, 아니면 불허하는 제약조건 입니다. 
+
+-- memberlist 테이블의 나이(age) 필드에 120살이 초과 되는 나이는 입력되지 못하게 제약 조건 추가
+alter table memberlist add constraint check_age check(age <= 120);
