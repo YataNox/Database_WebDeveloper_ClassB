@@ -108,6 +108,7 @@ insert into rentlist values('2021/10/04', rent_seq.nextVal, 10, 8, 300);
 insert into rentlist values('2021/10/05', rent_seq.nextVal, 9, 9, 100);
 insert into rentlist values('2021/10/05', rent_seq.nextVal, 9, 10, 200);
 
+-- 10월 4일 수업 시작 -------------------------------------------------------------------
 select * from RENTLIST;
 select * from MEMBERLIST;
 select * from BOOKLIST;
@@ -118,3 +119,65 @@ commit;
 -- 이를 원본에 적용하기 위해서는 COMMIT이라는 명령으로 원본에 적용해주어야 다른 접근에서 변경이
 -- 적용된 데이터를 볼 수 있습니다.
 -- 다만 이클립스에서의 데이터베이스 운영은 Auto Commit이 적용되어 실행 즉시 적용되고 있습니다.
+
+--[3] 레코드 변경 - 수정(UPDATE)
+-- UPDATE 테이블명 SET 변경내용 WHERE 검색 조건
+
+-- update member set age = 30 where membernum=8;
+-- 회원번호가 3인 회원의 나이를 30으로 수정하세요
+
+-- 명령문에 where 이 후 구문은 생략이 가능합니다.
+-- 다만 이 부분을 생략하면 모든 레코드를 대상으로 해서 UPDATE 명령이 실행되어 모든 레코드가
+-- 수정됩니다.
+-- 검색 조건 : 필드명 (비교-관계연산자) 조건 값으로 이루어진 조건 연산이며, 흔히 자바에서 if()로 사용되며
+-- 괄호 안에 사용했던 연산을 그대로 사용하는게 보통입니다.
+-- 나이가 29세 이상 -> where age>=29
+
+-- 데이터 수정의 실예
+-- exam01 테이블에서 deptno 값을 모두 30으로 수정
+update exam01 set deptno = 30;
+
+-- exam01 테이블에서 dname이 'ACCOUNT'인 레코드의 deptno를 10으로 수정
+update exam01 set deptno=10 where dname = 'ACCOUNT';
+
+-- exam01 테이블에서 dname이 'SALES'인 레코드의 DEPTNO를 20으로 수정
+update exam01 set deptno=20 where dname = 'SALES';
+
+-- exam01 테이블에서 dname이 'OPERATION'인 레코드의 deptno를 30으로 수정
+update exam01 set deptno=30 where dname = 'OPERATION';
+
+-- exam01 테이블에서 dname이 'MARKETING'인 레코드의 deptno를 40으로 수정
+update exam01 set deptno=40 where dname = 'MARKETING';
+
+-- exam01 테이블에서 deptno이 30인 레코드의 loc를 'BOSTON'으로 수정
+UPDATE exam01 set loc='BOSTON' where deptno=30;
+
+-- exam01 테이블에서 deptno이 40인 레코드의 loc를 'LA'로 수정
+UPDATE exam01 set loc='LA' where deptno=40;
+
+select * from exam01;
+
+select * from tabs; -- 현재 로그인된 사용자가 소유하고 잇는 테이블의 목록을 볼 수 있습니다.
+
+
+-- booklist 테이블의 제목 '봉제인형 살인사건' 도서의 grade를 '18'으로 수정
+update booklist set grade = 18 where subject='봉제인형 살인사건';
+select * from emp;
+
+-- emp 테이블의 모든 사원의 sal 값을 10%씩 인상
+update emp set sal = sal*1.1;
+
+-- emp 테이블에서 sal값이 3000이상인 사원의 급여 10% 삭감
+update emp set sal = sal*0.9 where sal>=3000;
+
+-- hiredate가 2002년 이전인 사원의 급여를 + 2000 -> (2001-12-31보다 작거나 같은)
+update emp set sal = sal +2000 where hiredate <= '2001-12-31';
+
+-- ename이 j로 시작하는 사원의 job을 manager로 변경
+update emp set job = 'manager' where ename like 'j%';
+
+-- memberlist 테이블에서 bpoint가 200이 넘는 사람만 bpoint*100으로 변경
+update memberlist set bpoint = bpoint*100 where bpoint > 200;
+
+-- rentlist 테이블에서 할인 금액이 100원이 넘으면 모두 할인 금액을 90으로 변경
+update RENTLIST set discount = 90 where discount>=100;
