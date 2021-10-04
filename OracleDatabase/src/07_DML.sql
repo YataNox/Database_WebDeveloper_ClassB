@@ -161,6 +161,7 @@ select * from tabs; -- 현재 로그인된 사용자가 소유하고 잇는 테�
 
 
 -- booklist 테이블의 제목 '봉제인형 살인사건' 도서의 grade를 '18'으로 수정
+-- update booklist set subject='봉제인형 살인사건' where subject='늑대아이';
 update booklist set grade = 18 where subject='봉제인형 살인사건';
 select * from emp;
 
@@ -181,3 +182,4 @@ update memberlist set bpoint = bpoint*100 where bpoint > 200;
 
 -- rentlist 테이블에서 할인 금액이 100원이 넘으면 모두 할인 금액을 90으로 변경
 update RENTLIST set discount = 90 where discount>=100;
+
