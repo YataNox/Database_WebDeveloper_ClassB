@@ -195,8 +195,13 @@ delete from rentlist where discount <= 100;
 
 -- 삭제의 제한
 -- delete from booklist where subject = '봉제인형 살인사건';
+-- 봉제인형 살인 사건 도서가 rentlist에 대여목록으로 존재하므로...
+-- 외래키의 참조무결성에 위배됩니다. 따라서 이삭제 명령은 에러가 발생합니다.
+-- 이를 해결하라면 우선 rentlist 테이블에 해당 도서 대여목록 레코드를 모두 삭제한 후
+-- booklist 테이블에서 해당 도서를 삭제해야 합니다.
 
-
+-- delete from rentlist where booknum=8;
+-- delete from booklist where subject = '봉제인형 살인사건';
 
 
 
