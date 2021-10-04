@@ -197,11 +197,45 @@ delete from rentlist where discount <= 100;
 -- delete from booklist where subject = '봉제인형 살인사건';
 -- 봉제인형 살인 사건 도서가 rentlist에 대여목록으로 존재하므로...
 -- 외래키의 참조무결성에 위배됩니다. 따라서 이삭제 명령은 에러가 발생합니다.
+
+-- 해결 방법 #1
 -- 이를 해결하라면 우선 rentlist 테이블에 해당 도서 대여목록 레코드를 모두 삭제한 후
 -- booklist 테이블에서 해당 도서를 삭제해야 합니다.
 
 -- delete from rentlist where booknum=8;
 -- delete from booklist where subject = '봉제인형 살인사건';
 
+
+-- 해결 방법 #2
+-- 외래키 제약조건을 삭제한 후 다시 생성
+-- 생성시 옵션을 추가해서 참조되는 값이 삭제되면 참조하는 값도 같이 삭제되도록 구성합니다.
+-- 외래키 삭제
+alter table rentlist drop constraint fk1;
+-- 새로운 외래키 초가
+alter table rentlist add constraint fk1 foreign key(booknum)
+references booklist(booknum) on delete cascade;
+-- on delete cascade : booklist의 도서가 삭제되면 rentlist의 해당 도서 대여내역도 함께 삭제하는 옵션
+
+
+-- memberlist 테이블에서 회원 한 명을 삭제하면, rentlist 테이블에서도 해당 회원이 대여한 기록을 같이 삭제하도록
+-- 외래키 설정을 바꿔주세요 (외래키 제약 조건 삭제 후 재생성)
+alter table rentlist drop constraint fk2;
+alter table rentlist add constraint fk2 foreign key(membernum)
+references memberlist(membernum) on delete cascade;
+
+select * from booklist;
+select * from RENTLIST;
+select * from MEMBERLIST;
+
+-- delete from rentlist where booknum=8;
+delete from booklist where subject ='봉제인형 살인사건';
+delete from memberlist where name = '추신수';
+
+
+-- 참조되는 값의 삭제가 아니라 수정은 아직 적용되지 않습니다.
+-- booklist와 memberlist 테이블의 booknum, membernum은 수정이 아직 불가능합니다.
+-- 이를 해결하기 위해서 외래키 설정시 on update cascade옵션을 추가하면 될 듯 하지만
+-- 이는 오라클에서 허용하지 않습니다.
+-- mysql에서만 사용이 가능하며, 오라클에서는 뒷 단원의 트리거를 공부하면서 외래키가 수정이 되도록 하겠습니다.
 
 
