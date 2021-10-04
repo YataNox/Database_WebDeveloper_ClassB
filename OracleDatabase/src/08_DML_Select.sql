@@ -123,5 +123,11 @@ select * from emp hwere comm is not null -- comm 필드가 null 이 아닌 레�
 select deptno, ename, sal*12 as 연봉 from emp;
 
 
+-- sal 값이 null 일 경우 위의 계산에 오류가 발생합니다. 이를 해결하기 위한 방법
+select deptno, ename, comm, nvl(sal,1000)*12 as 연봉 from emp;
+-- nvl 함수는 null 값을 다른 값으로 바꿔주는 내장함수로서 다음 단원에서 다른 함수들과 함께 학습합니다.
+
+
+
 
 
