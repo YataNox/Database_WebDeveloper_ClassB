@@ -107,3 +107,14 @@ insert into rentlist values('2021/10/04', rent_seq.nextVal, 7, 7, 100);
 insert into rentlist values('2021/10/04', rent_seq.nextVal, 10, 8, 300);
 insert into rentlist values('2021/10/05', rent_seq.nextVal, 9, 9, 100);
 insert into rentlist values('2021/10/05', rent_seq.nextVal, 9, 10, 200);
+
+select * from RENTLIST;
+select * from MEMBERLIST;
+select * from BOOKLIST;
+
+commit;
+-- DBMS에서의 데이터 운영은 실시간으로 데이터 원본으로 작업하고 변경사항이 저장되는 것이 아니라
+-- 가상의 사본을 대상으로 작업하게 됩니다.
+-- 이를 원본에 적용하기 위해서는 COMMIT이라는 명령으로 원본에 적용해주어야 다른 접근에서 변경이
+-- 적용된 데이터를 볼 수 있습니다.
+-- 다만 이클립스에서의 데이터베이스 운영은 Auto Commit이 적용되어 실행 즉시 적용되고 있습니다.
