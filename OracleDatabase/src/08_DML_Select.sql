@@ -110,4 +110,18 @@ select * from emp emp order by job desc, hiredate desc;
 -- 위의 예제로 봤을 때 job으로 1차 내림차순 정렬하고, 같은 job 값들 사이에 hiredate로
 -- 내림차순 정렬합니다.
 
+-- 그 외 활용하기 좋은 select에 대한 예제
+-- 부서 번호가 10이 아닌 사원( 아래 두 문장은 같은 의미의 명령입니다. )
+select * from emp where not (deptno = 10);
+select * from emp where deptno <> 10;
+
+-- 특정 필드 값이 NULL인 레코드 또는 NULL이 아닌 레코드
+select * from emp hwere comm is null -- comm 필드가 null 인 레코드
+select * from emp hwere comm is not null -- comm 필드가 null 이 아닌 레코드
+
+-- 사원의 연봉 출력
+select deptno, ename, sal*12 as 연봉 from emp;
+
+
+
 
