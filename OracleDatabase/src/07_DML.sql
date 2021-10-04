@@ -51,7 +51,7 @@ insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
 values(book_seq.nextVal, '오징어게임', 2021, 30000, 2500, 'all');
 
 insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
-values(book_seq.nextVal, '늑대아이', 2012, 12000, 2500, 'all');
+values(book_seq.nextVal, '봉제인형 살인사건', 2012, 12000, 2500, 'all');
 
 insert into booklist(booknum, subject, makeyear, inprice, rentprice, grade)
 values(book_seq.nextVal, 'A-특공대', 2010, 12000, 5500, '13');
@@ -182,4 +182,21 @@ update memberlist set bpoint = bpoint*100 where bpoint > 200;
 
 -- rentlist 테이블에서 할인 금액이 100원이 넘으면 모두 할인 금액을 90으로 변경
 update RENTLIST set discount = 90 where discount>=100;
+
+
+
+
+-- [4] 레코드의 삭제
+-- delete from 테이블명 where 조건식
+
+-- rentlist 테이블에서 discount가 100이하의 레코드를 삭제
+delete from rentlist where discount <= 100;
+--where절이 없으면 테이블 내의 모든 레코드를 삭제합니다.
+
+-- 삭제의 제한
+-- delete from booklist where subject = '봉제인형 살인사건';
+
+
+
+
 
