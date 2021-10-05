@@ -61,7 +61,7 @@ select round(1728.9382, -3) from dual; -- 2000
 -- [13] abs() : 절대값
 select abs(-10) from dual; -- 10
 -- [14] floor() : 소수점 아래 절삭 - 반올림 없음
-select floor(12.94567) from dual -- 12
+select floor(12.94567) from dual; -- 12
 -- [15] trunc() : 특정 자리 자르기 - 반올림 없음, 3은 남기고 싶은 소수점 아래 자리수
 select trunc(12.34567, 3) from dual; -- 12.345
 -- [16] mod() : 나머지 -- 8을 5로 나눈 나머지
