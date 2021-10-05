@@ -77,4 +77,25 @@ select floor(months_between('2021-12-31', '2020-07-10')) from dual; -- 17.677419
 -- [19] add_months() : 개월 수 더하기
 select add_months(sysdate, 200) from dual; -- 2038-06-05 17:13:38.0
 
+-- [20] next_day() : 다가올 요일에 해당하는 날짜 - 오늘 날짜(sysdate)에서 가장 가까운 일요일
+select next_day(sysdate, '일요일' ) from dual;
+
+-- [21] last_day() : 해당 달의 마지막 일 수
+select last_day(sysdate) from dual;
+-- select last_day(2020-12-15) from dual;
+
+-- [22] to_char() : 문자열로 반환
+select to_char(sysdate, 'yyyy-mm-dd') from dual;
+-- [23] to_date() : 날짜형(date)으로 변환
+select to_date('2019/12/31', 'yyyy/mm/dd') from dual;
+
+-- 그 외 활용 가능한 함수들...
+
+-- [24] nvl() : NULL인 데이터를 다른 데이터로 변환
+select comm/100 as comm_pct from emp;
+-- comm 필드 값에 따라서 일부 레코드는 계산 결과가 null이 나올 수 있음
+select nvl(comm, 1)/100 as comm_pct from emp;
+-- 해당 필드 값이 null이면 1로 바꿔서 계산에 참여
+
+
 
