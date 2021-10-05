@@ -90,5 +90,29 @@ create table employees(
 	update_date date
 );
 
+create table products(
+	prod_id number(6) not null,
+	prod_name varchar(50) not null,
+	prod_desc varchar2(4000),
+	prod_subcategory varchar2(50),
+	prod_subcategory_id number(6),
+	prod_subcategory_desc varchar2(2000),
+	prod_weight_class number(3),
+	prod_unit_of_measure varchar2(20),
+	prod_pack_size varchar2(30),
+	supplier_id number(6),
+	prod_status varchar2(20),
+	prod_list_price number(8,2),
+	prod_min_price number(8,2),
+	prod_total varchar2(13),
+	prod_total_id number(6),
+	prod_src_id number(6),
+	prod_eff_from date,
+	prod_eff_to date,
+	prod_valid char(1),
+	create_date date,
+	update_date date
+);
+
 
 
