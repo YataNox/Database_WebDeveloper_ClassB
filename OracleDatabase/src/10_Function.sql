@@ -124,5 +124,29 @@ select employee_id, emp_name, decode(department_id,
 ) as "부서명" 
 from employees;
 
+-- [26] case() : if~ else if ~ 와 비슷한 구조
+select employee_id, emp_name, department_id,
+	case when department_id = 10 then 'ACCOUNT'
+			when department_id = 20 then 'RESEARCH'
+			when department_id = 30 then 'SALES'
+			when department_id = 40 then 'OPERATIONS'
+			when department_id = 50 then 'SH_CHECK'
+			when department_id = 60 then 'IT_PROG'
+			when department_id = 70 then 'PR_REP'
+			when department_id = 80 then 'SA_REP'
+			when department_id = 90 then 'AD_PRES'
+			when department_id = 100 then 'FI_ACCOUNT'
+			when department_id = 110 then 'AC_ACCOUNT'
+	end as "부서명"
+from employees;
+			
 
+-- mod와 remainder
+-- 둘 다 첫 번째 요소를 두 번째 요소로 나눈 나머지를 계산하지만 내부적 
+-- 계산법이 조금 다름
+select mod(19,4), mod(19.123, 4.2) from dual;
+select remainder(19,4), remainder(19.123, 4.2) from dual;
+-- mod : 19 - 4 * floor(19/4)
+-- remainder : 19 - 4 * round(19/4)
 
+-- 10.5를 4.2로 나눈 나머지 : 10.5 - (4.2 * 2) = 2.1
