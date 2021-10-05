@@ -65,4 +65,16 @@ create table customers(
 
 alter table customers modify cust_credit_limit number(6);
 
+create table departments(
+	department_id number(6) not null,
+	department_name varchar2(80) not null,
+	parent_id number(6),
+	manager_id number(6),
+	create_date date,
+	update_date date
+);
+
+
+
+
 
