@@ -74,7 +74,21 @@ create table departments(
 	update_date date
 );
 
-
+create table employees(
+	employee_id number(6) not null,
+	employee_name varchar2(80) not null,
+	email varchar2(50),
+	phone_number varchar2(30),
+	hire_date date not null,
+	salary number(8,2),
+	manager_id number(6),
+	commission_pct number(2,2),
+	retire_date date,
+	department_id number(6),
+	job_id varchar2(10),
+	create_date date,
+	update_date date
+);
 
 
 
