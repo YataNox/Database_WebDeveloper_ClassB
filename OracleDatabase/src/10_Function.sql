@@ -206,3 +206,16 @@ select to_char(sysdate, 'HH24"시" MI"분" SS"초"') from dual;
 -- PR : 음수일 때 <> 로 표시
 -- RN : 로마 숫자 표시
 -- S : 양수 음수 표시
+
+
+-- NULL 관련 함수
+
+select nvl(manager_id, employee_id) from employees;
+-- manager_id가 null일 때 employee_id로 출력 값 대체
+
+select employee_id,
+nvl2(commission_pct, salary + (salary * commission_pct), salary) as salary2
+from employees;
+-- nvl2 함수는 함수의 인수로 세 개의 인수를 받아서 첫 번째 요소가 널이 아니면 
+-- 두 번째 요소로, 첫 번째 요소가 널이면 세 번째 요소로 출력함
+
