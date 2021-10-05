@@ -27,4 +27,17 @@ select substr('홍길동 만세', 2, 4) from dual;
 -- substr의 경우 자바의 substring처럼 시작 번째 부터 끝 번째 +1이 아닌
 -- 시작번째부터 글자 수를 나타냅니다. 위의 경우 2번째 글자부터 4개의 글자를 표시
 
+-- [9] instr() : 문자열 시작 위치
+select instr('홍길동 만세 동그라미', '동') from dual;
+
+-- [10] lpad(), rpad() : 자리 채우기
+select lpad('Oracle', 20, '#') from dual; -- ##############Oracle
+select rpad('Oracle', 20, '*') from dual; -- Oracle**************
+
+-- [11] trim() : 컬럼이나 대상 문자열에서 특정 문자가 첫 번째 글자이거나 마지막 글자이면 잘라내고 남은 문자열 반환.
+select trim('a' from 'aaaOracleaaaaaaaa') as result from dual; -- Oracle
+select trim(' ' from '      Oracle     ') as result from dual; -- Oracle
+
+
+
 
