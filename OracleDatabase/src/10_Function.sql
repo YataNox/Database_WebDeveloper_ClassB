@@ -108,6 +108,7 @@ select * from DEPARTMENTS;
 select * from EMPLOYEES;
 select * from tab;
 
+-- [25] decode() : switch문과 같은 기능
 select employee_id, emp_name, decode(department_id,
 	10, 'ACCOUNT',
 	20, 'RESEARCH',
