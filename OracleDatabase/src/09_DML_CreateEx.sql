@@ -1,0 +1,19 @@
+select * from tab;
+
+create table bonus(
+	ENAME varchar2(10),
+	JOB varchar2(9),
+	SAL number,
+	COMM number
+);
+
+create table channels(
+	CHANNEL_ID NUMBER(6) NOT NULL,
+	CHANNEL_DESC VARCHAR2(20) NOT NULL,
+	CHANNEL_CLASS VARCHAR2(20),
+	CHANNEL_CLASS_ID NUMBER(6),
+	CHANNEL_TOTAL VARCHAR2(15),
+	CHANNEL_TOTAL_ID NUMBER(6),
+	CREATE_DATE DATE,
+	UPDATE_DATE DATE
+);
