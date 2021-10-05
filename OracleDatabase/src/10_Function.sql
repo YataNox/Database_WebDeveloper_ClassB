@@ -38,6 +38,12 @@ select rpad('Oracle', 20, '*') from dual; -- Oracle**************
 select trim('a' from 'aaaOracleaaaaaaaa') as result from dual; -- Oracle
 select trim(' ' from '      Oracle     ') as result from dual; -- Oracle
 
+-- *** 수직 처리 관련 함수 ***
+-- [12] round() : 반올림( 음수 : 소수점 이상 자리)
+select round(12.3456, 3) from dual;
+-- 12.3456 : 반올림하려는 대상 숫자 3 : 반올림하여 표시하고자하는 마지막 자릿 수
+
+
 
 
 
