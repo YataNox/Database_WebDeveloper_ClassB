@@ -7,6 +7,9 @@ create table bonus(
 	COMM number
 );
 
+alter table bonus modify sal number(6);
+alter table bonus modify comm number(6);
+
 create table channels(
 	CHANNEL_ID NUMBER(6) NOT NULL,
 	CHANNEL_DESC VARCHAR2(20) NOT NULL,
@@ -60,6 +63,6 @@ create table customers(
 	update_date date
 );
 
-
+alter table customers modify cust_credit_limit number(6);
 
 
