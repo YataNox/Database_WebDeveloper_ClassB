@@ -33,6 +33,33 @@ create table countries(
 	update_date date
 );
 
+create table customers(
+	cust_id number(6) not null,
+	cust_name varchar2(100) not null,
+	cust_gender char(1),
+	cust_year_of_birth number(4),
+	cust_marital_status varchar2(20),
+	cust_street_address varchar2(100),
+	cust_postal_code varchar2(10),
+	cust_city varchar2(30),
+	cust_city_id number(6),
+	cust_state_province varchar2(40),
+	cust_state_province_id number(6),
+	country_id number(6),
+	cust_main_phone_number varchar2(25),
+	cust_income_level varchar2(30),
+	cust_credit_limit number,
+	cust_email varchar2(30),
+	cust_total varchar2(20),
+	cust_total_id number(6),
+	cust_src_id number(6),
+	cust_eff_from date,
+	cust_eff_to date,
+	cust_valid char(1),
+	create_date date,
+	update_date date
+);
+
 
 
 
