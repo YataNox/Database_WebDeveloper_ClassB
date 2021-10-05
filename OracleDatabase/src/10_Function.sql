@@ -97,5 +97,31 @@ select comm/100 as comm_pct from emp;
 select nvl(comm, 1)/100 as comm_pct from emp;
 -- 해당 필드 값이 null이면 1로 바꿔서 계산에 참여
 
+-- PoWER 함수
+select power(3,2), power(3,3), power(3, 3.0001) from dual;
+-- 첫 번째 요소 값을 두 번째 요소만큼 거듭 제곱
+
+-- 제곱근 SQRT
+select SQRT(2), SQRT(5) from dual;
+
+select * from DEPARTMENTS;
+select * from EMPLOYEES;
+select * from tab;
+
+select employee_id, emp_name, decode(department_id,
+	10, 'ACCOUNT',
+	20, 'RESEARCH',
+	30, 'SALES',
+	40, 'OPERATION',
+	50, 'SH_CHECK',
+	60, 'IT_PRPG',
+	70, 'PR_REP',
+	80, 'SA_REP',
+	90, 'AD_PRES',
+	100, 'FI_ACCOUNT',
+	110, 'AC_ACCOUNT'
+) as "부서명" 
+from employees;
+
 
 
