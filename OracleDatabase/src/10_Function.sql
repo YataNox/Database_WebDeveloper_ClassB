@@ -58,7 +58,23 @@ select round(1728.9382, -1) from dual; -- 1730
 select round(1728.9382, -2) from dual; -- 1700
 select round(1728.9382, -3) from dual; -- 2000
 
+-- [13] abs() : 절대값
+select abs(-10) from dual; -- 10
+-- [14] floor() : 소수점 아래 절삭 - 반올림 없음
+select floor(12.94567) from dual -- 12
+-- [15] trunc() : 특정 자리 자르기 - 반올림 없음, 3은 남기고 싶은 소수점 아래 자리수
+select trunc(12.34567, 3) from dual; -- 12.345
+-- [16] mod() : 나머지 -- 8을 5로 나눈 나머지
+select mod(8,5) from dual; -- 3
 
+-- *** 날짜 처리 관련 함수 ***
+-- [17] sysdate : 날짜
+select sysdate from dual; -- 오늘 날짜와 현재 시간
 
+-- [18] months_between() : 개월 수 구하지
+select floor(months_between('2021-12-31', '2020-07-10')) from dual; -- 17.677419
+
+-- [19] add_months() : 개월 수 더하기
+select add_months(sysdate, 200) from dual; -- 2038-06-05 17:13:38.0
 
 
