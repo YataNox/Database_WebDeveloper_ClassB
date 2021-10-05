@@ -43,6 +43,21 @@ select trim(' ' from '      Oracle     ') as result from dual; -- Oracle
 select round(12.3456, 3) from dual;
 -- 12.3456 : 반올림하려는 대상 숫자 3 : 반올림하여 표시하고자하는 마지막 자릿 수
 
+-- 3 : 소수점 넷째자리에서 반올림하여 셋째자리까지 남김
+-- 2 : 소수점 셋째자리에서 반올림하여 둘째자리까지 남김
+-- 1 : 소수점 둘째자리에서 반올림하여 첫째자리까지 남김
+-- 0 : 소수점 첫째자리에서 반올림하여 소수점 자릿수 없앰
+-- -1 : 소수점 1의 자리에서 반올림하여 10의 자리까지 남김
+-- -2 : 소수점 10의 자리에서 반올림하여 100의 자리자리까지 남김
+-- -3 : 소수점 100의 자리에서 반올림하여 1000의 자리까지 남김
+select round(1728.9382, 3) from dual; -- 1728.938
+select round(1728.9382, 2) from dual; -- 1728.94
+select round(1728.9382, 1) from dual; -- 1728.9
+select round(1728.9382, 0) from dual; -- 1729
+select round(1728.9382, -1) from dual; -- 1730
+select round(1728.9382, -2) from dual; -- 1700
+select round(1728.9382, -3) from dual; -- 2000
+
 
 
 
