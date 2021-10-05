@@ -172,5 +172,37 @@ select to_char(sysdate, 'AM') from dual;
 select to_char(sysdate, 'yy"년"') from dual;
 select to_char(sysdate, 'y"년"') from dual;
 
+-- month, mon -> 월표시
+select to_char(sysdate, 'month') from dual;
+select to_char(sysdate, 'mon') from dual;
+
+-- D 요일 1~7로 표시
+select to_char(sysdate, 'D') from dual; -- 3
+select to_char(sysdate, 'DAY') from dual; -- 화요일
+
+-- DD 일자를 01~31로 표시
+select to_char(sysdate, 'DD') from dual; -- 05
+
+-- DDD 일자를 001-365 형태로 표시
+select to_char(sysdate, 'DDD') from dual; -- 278
+
+-- DL 오늘 날짜를 요일까지 표시
+select to_char(sysdate, 'DL') from dual; -- 2021년 10월 5일 화요일
+
+-- WW : 주를 01~53주 형태로 표시
 
 
+-- HH, HH12 : 시간을 12시로 표시
+-- HH24 : 시간을 24시로 표시
+-- MI : 분을 01~59 형태로 표시
+select to_char(sysdate, 'MI"분"') from dual; -- 14
+-- SS : CHFMF 01~59 형태로 표시
+select to_char(sysdate, 'HH24"시" MI"분" SS"초"') from dual;
+
+-- 그 외 TO_CHAR 옵션
+-- , : 세자리 마다 표시할 콤마로 사용
+-- . : 소수점 자릿수로 사용
+-- 9 : 한자리 숫자가 나오는 자리로 사용
+-- PR : 음수일 때 <> 로 표시
+-- RN : 로마 숫자 표시
+-- S : 양수 음수 표시
