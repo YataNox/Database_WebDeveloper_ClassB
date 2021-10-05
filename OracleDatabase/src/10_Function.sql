@@ -16,3 +16,15 @@ select lower('Hong Kil Dong') as "소문자" from dual;
 select upper('Hong Kil Dong') as "대문자" from dual;
 -- [5] initcap() : 첫 자만 대문자로 변환
 select initcap('Hong Kil Dong') as "첫 글자만 대문자" from dual;
+
+-- [6] concat() : 문자열 연결
+select concat('이젠 IT', '아카데미') from dual;
+-- [7] length() : 문자열의 길이
+select length('이젠 아이티 아카데미'), length('The ezen IT') from dual;
+
+-- [8] substr() : 문자열 추출(데이터, 인덱스(1), 카운트)
+select substr('홍길동 만세', 2, 4) from dual;
+-- substr의 경우 자바의 substring처럼 시작 번째 부터 끝 번째 +1이 아닌
+-- 시작번째부터 글자 수를 나타냅니다. 위의 경우 2번째 글자부터 4개의 글자를 표시
+
+
