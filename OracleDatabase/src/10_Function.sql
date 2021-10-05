@@ -150,3 +150,27 @@ select remainder(19,4), remainder(19.123, 4.2) from dual;
 -- remainder : 19 - 4 * round(19/4)
 
 -- 10.5를 4.2로 나눈 나머지 : 10.5 - (4.2 * 2) = 2.1
+
+-- 문자 함수 replace
+select replace('나는 너를 모르는데 너는 나를 알겠는가?', '나', '너') from dual;
+-- replace(문자열1, 문자열2, 문자열3)
+-- 문자열1내 글자 중 문자열2를 찾아서 문자열3으로 대체
+select replace(' ABC DEF ' , ' ', '') from dual;
+
+
+-- 변환 함수
+select to_char(123456789, '999,999,999') from dual;
+select to_char(sysdate, 'yyyy-mm-dd') from dual;
+select to_number('123456') from dual;
+select to_date('20140101', 'yyyy-mm-dd') from dual;
+select to_date('20140101 13:44:50', 'yyyy-mm-dd HH24:MI:SS') from dual;
+
+-- 'AM' or 'PM' 오전 오후 표시 -> TO_CHAR(SYSDATE, 'AM')
+select to_char(sysdate, 'AM') from dual;
+
+-- yyyy -> 년도 표시
+select to_char(sysdate, 'yy"년"') from dual;
+select to_char(sysdate, 'y"년"') from dual;
+
+
+
