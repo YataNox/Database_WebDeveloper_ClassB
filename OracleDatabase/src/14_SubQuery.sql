@@ -43,6 +43,7 @@ where sal > (select max(sal) from emp group by deptno having deptno = 30);
 select ename , sal, job from emp
 where sal > (select min(sal) from emp group by deptno having deptno = 30);
 
+select ename, job, sal from emp where sal > any(select sal from emp where deptno =30);
 
 -- [연습문제]
 -- 영업 사원(JOB = 'SALESMAN')들의 최소 급여보다 많이 받는 사원들의
@@ -50,5 +51,7 @@ where sal > (select min(sal) from emp group by deptno having deptno = 30);
 select ename, sal, job from emp
 where sal > (select min(sal) from emp group by job having job = 'SALESMAN') and job <> 'SALESMAN';
 
+select ename, job, sal from EMP
+where sal > any(select sal from emp where job ='SALESMAN') and job<>'SALESMAN';
 
 
