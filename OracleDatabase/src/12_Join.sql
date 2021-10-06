@@ -77,6 +77,13 @@ select a.rentdate, b.subject, c.name, c.Bpoint, b.rentprice  from RENTLIST a, BO
 where a.booknum = b.booknum and a.membernum = c.membernum;
 
 
+-- outer join
+-- 조인 조건에 만족하지 못해서 해당 결과를 출력시에 누락이 되는 문제점이 발생할 때
+-- 해당 레코드를 출력하는 조인
+
+
+
+
 
 
 
