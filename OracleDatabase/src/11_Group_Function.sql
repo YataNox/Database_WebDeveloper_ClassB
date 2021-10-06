@@ -25,7 +25,7 @@ select * from RENTLIST;
 -- 도서별 대여 건수
 select booknum, count(*) from rentlist group by booknum;
 -- 날짜별 할인 금액의 평균
-select rentdate, avg(discount) from rentlist group by rentdate;
+select rentdate, avg(discount) from rentlist group by rentdate order by rentdate desc;
 -- rentlist 날짜별 대여 건수
 select rentdate, count(*) from rentlist group by rentdate;
 -- employees 테이블의 부서 id별 급여의 평균
@@ -36,6 +36,11 @@ select department_id, avg(salary) from employees group by DEPARTMENT_id;
 select * from kor_loan_status;
 select period, region, sum(loan_jan_amt) from KOR_LOAN_STATUS
 group by period, region;
+
+
+-- HAVING절 : 그룹핑된 내용들에 조건을 붙일 때
+-- 평균 금액이 180미만인 데이터의 날짜별 할인금액의 평균
+select avg(discount) from rentlist group by rentdate having avg(discount) < 180;
 
 
 
