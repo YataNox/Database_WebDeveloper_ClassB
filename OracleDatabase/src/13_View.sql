@@ -15,8 +15,11 @@
 -- -> 결과는 select의 결과를 테이블로 내어놓는 가상테이블 제작 명령인 셈입니다.
 -- 뷰 이름으로 조회 명령을 저장하고 있다가 뷰 이름으로 조회 할때마다 조회 명령이 실행되어 결과를 내놓습니다.
 
-create view reslut_inner_join as
+create view result_inner_join as
 select a.empno, a.ename, a.job, a.hiredate, a.deptno, b.dname, b.loc
 from emp a, dept b where a.deptno = b.deptno;
 -- 테이블 저장이 아니라 select문 저장으로서, 만들어진 뷰를 또다른 select 조회할 때마다
 -- 저장된 select가 실행되며 결과를 보여줍니다.
+
+select * from result_inner_join;
+
