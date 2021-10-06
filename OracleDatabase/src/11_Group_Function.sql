@@ -7,4 +7,13 @@ select count(*) as "회원 인원수" from memberlist;
 select count(*) as "회원 인원수" from MEMBERLIST where bpoint >= 2000;
 
 -- avg() : 평균
-select avg(inprice) from booklist;
+select round(avg(inprice), 0) from booklist;
+
+-- MAX : 최대 값
+select MAX(inprice) from booklist;
+
+-- MIN : 최소 값
+select MIN(inprice) from booklist;
+
+
+
