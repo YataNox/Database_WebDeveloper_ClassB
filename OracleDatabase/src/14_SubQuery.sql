@@ -32,5 +32,8 @@ where sal>=(select avg(sal) from emp);
 select * from EMP
 where deptno in(select distinct deptno from emp where sal>=3000);
 
-
+-- [연습문제]
+-- 30번 부서 소속 사원들 중에서 급여를 가장 많이 받는 사원 보다.. 급여가 더많은 사원의 이름과 job 급여
+select ename , sal, job from emp
+where sal > (select max(sal) from emp group by deptno having deptno = 30);
 
