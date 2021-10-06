@@ -42,6 +42,8 @@ group by period, region;
 -- 평균 금액이 180미만인 데이터의 날짜별 할인금액의 평균
 select avg(discount) from rentlist group by rentdate having avg(discount) < 180;
 
-
+-- kor_loan_status 테이블의 날짜별 대출 잔액의 합계 중 period가 2013년 11월인 데이터 출력
+select period, region, sum(loan_jan_amt) from KOR_LOAN_STATUS
+group by period, region having period = '201311';
 
 
