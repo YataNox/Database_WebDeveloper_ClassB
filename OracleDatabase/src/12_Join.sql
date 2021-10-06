@@ -40,6 +40,12 @@ select emp.ename, emp.deptno, dept.loc, dept.dname from dept, emp
 where emp.deptno = dept.deptno and emp.ename = 'SCOTT';
 -- 컬럼 명 앞에 테이블 명을 기술하여 컬럼의 소속을 명확히 해주어야 오류가 없습니다.
 
+-- 테이블 명에 별칭을 부여한 후 컬럼 앞에 소속 테이블을 지정
+-- 테이블명으로 소속을 기술할 때는 한 쪽에만 있는 필드에 생략이 가능하지만 아래와 같이
+-- 별칭 부여시에는 모든 필드 앞에 반드시 별칭을 기술해야함
+select a.ename, b.dname, b.loc, a.deptno from emp a, dept b
+where a.deptno = b.deptno and a.ename='SCOTT';
+
 
 
 
