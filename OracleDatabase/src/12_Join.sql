@@ -46,6 +46,37 @@ where emp.deptno = dept.deptno and emp.ename = 'SCOTT';
 select a.ename, b.dname, b.loc, a.deptno from emp a, dept b
 where a.deptno = b.deptno and a.ename='SCOTT';
 
+-- non-동등조인
+-- 동일 컴럼이 없어서 다른 조건을 사용하여 조인
+-- 조인 조건에 특정 범위내에 있는지를 조사하기 위해 조걸절에 조인 조건을 '='연산자 이외의 비교
+-- 연산자를 이용
+select * from emp;
+select * from SALGRADE;
+
+select a.ename, a.sal, b.grade from emp a, SALGRADE b
+where a.sal >= b.losal and a.sal<=b.hisal;
+
+select a.ename, a.sal, b.grade from emp a, SALGRADE b
+where a.sal between b.losal and b.hisal;
+
+-- 세 개의 테이블을 하나로 join(equi, nonequi 조인의 조합)
+select a.ename, a.sal, b.dname, c.grade from emp a, SALGRADE c, dept b
+where a.deptno = b.deptno and a.sal between c.losal and c.hisal;
+
+
+-- 연습 문제
+-- rentlist 테이블의 rentdate, booknum, membernum을 조회하되,
+-- booklist와 memberlist 테이블을 조인해서 책 제목과 대여가격, 회원 이름과 사은 포인트를 출력하세요
+-- 출력 순서 - 대여일자, 도서제목, 회원 이름, 포인트, 대여금액
+-- 테이블의 별칭은 a,b,c로하세요
+select * from RENTLIST;
+select * from bookLIST;
+select * from memberLIST;
+
+select a.rentdate, b.subject, c.name, c.Bpoint, b.rentprice  from RENTLIST a, BOOKLIST b, MEMBERLIST c
+where a.booknum = b.booknum and a.membernum = c.membernum;
+
+
 
 
 
