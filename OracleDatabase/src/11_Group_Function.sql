@@ -46,6 +46,6 @@ select avg(discount) from rentlist group by rentdate having avg(discount) < 180;
 select period, region, sum(loan_jan_amt) from KOR_LOAN_STATUS
 group by period, region having period = '201311';
 
--- ** group by 절에는 select와 from 사이에 기술된 함수를 재외한 모든 필드를 반드시 써야합니다.
+-- ** group by 절에는 select와 from 사이에 기술된 함수를 제외한 모든 필드를 반드시 써야합니다.
 
 
