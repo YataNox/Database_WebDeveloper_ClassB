@@ -26,7 +26,14 @@ select department_name, parent_id from departments where department_id = 50;
 -- A 테이블의 필드가 8개, B테이블의 필드가 3개라면 총 크로스조인의 결과 레코드 수는 8+3 = 11
 select * from dept; -- 4레코드 3필드
 select * from emp; -- 14레코드 8필드
+-- 크로스 조인
 select * from dept, emp -- 레코드 56 필드 11
+
+-- 동등 조인 : 조인 대상이 되는 두 테이블에서 공통적으로 존재하는 칼럼의 값이 일치하는 행을 연결하여 결과를 생성
+select * from dept, emp where emp.deptno = dept.deptno;
+
+-- 각 사원의 이름, 부서번호, 부서명, 지역을 출력하세요
+select emp.ename, emp.deptno, dept.loc, dept.dname from dept, emp where emp.deptno = dept.deptno;
 
 
 
