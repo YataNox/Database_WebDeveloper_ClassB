@@ -89,4 +89,28 @@ select * from emp a, dept b
 where a.deptno(+) = b.deptno;
 
 
+-- [3] ANSI join
+-- 		(1) Ansi Cross join
+select * from emp cross join dept -- 일반 크로스 조인과 같은 효과
+--		(2) Ansi inner join -- 일반 동등 조인과 같은 효과
+select ename, dname from emp a, dept b where a.deptno=b.deptno;
+-- Ansi 이너조인의 표현 방식
+select ename, dname from emp inner join dept on emp.deptno= dept.deptno;
+
+select ename, dname from emp inner join dept on emp.deptno= dept.deptno
+where ename='SCOTT';
+
+select ename, dname from emp inner join dept using (deptno);
+-- 두 테이블의 조인 기준이 되는 필드명이 똑같을 때문 사용 가능
+
+-- (3) Ansi Outer Join -- 기존 아우터 조인의 표현방식
+select * from emp, dept where emp.deptno = dept.deptno(+);
+select * from emp, dept where emp.deptno(+) = dept.deptno;
+-- Ansi Outer Join 표현방식
+select * from emp left outer join dept on emp.deptno = dept.deptno;
+select * from emp right outer join dept on emp.deptno = dept.deptno;
+-- 기준이 되는 필드명 중 A테이블의 필드에 있으나 B테이블에는 해당 값이 없는 겨웅에 대한 표현 여부 결정
+
+
+
 
