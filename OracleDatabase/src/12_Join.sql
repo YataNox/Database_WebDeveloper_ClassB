@@ -90,4 +90,3 @@ where a.deptno(+) = b.deptno;
 
 
 
-
