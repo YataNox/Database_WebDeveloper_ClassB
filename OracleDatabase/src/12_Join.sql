@@ -80,9 +80,13 @@ where a.booknum = b.booknum and a.membernum = c.membernum;
 -- outer join
 -- 조인 조건에 만족하지 못해서 해당 결과를 출력시에 누락이 되는 문제점이 발생할 때
 -- 해당 레코드를 출력하는 조인
+select b.booknum, a.subject, b.rentdate from booklist a, rentlist b
+where a.booknum(+)= b.booknum;
 
-
-
+-- outer 조인으로 emp 테이블의 인원에 대한 부서명을 출력하되 부서명이 없는 필드는
+-- NULL 값으로 표시하세요
+select * from emp a, dept b
+where a.deptno(+) = b.deptno;
 
 
 
