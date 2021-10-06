@@ -37,3 +37,18 @@ where deptno in(select distinct deptno from emp where sal>=3000);
 select ename , sal, job from emp
 where sal > (select max(sal) from emp group by deptno having deptno = 30);
 
+-- [연습문제]
+-- 부서 번호가 30번인 사원들의 급여 중에서 가장 늦은 급여보다.. 높은 급여를 받는
+-- 사원의 이름과 job, 급여
+select ename , sal, job from emp
+where sal > (select min(sal) from emp group by deptno having deptno = 30);
+
+
+-- [연습문제]
+-- 영업 사원(JOB = 'SALESMAN')들의 최소 급여보다 많이 받는 사원들의
+-- 이름과 급여와 직급, 급여를 출력하되 영업사원은 출력하지 않습니다.
+select ename, sal, job from emp
+where sal > (select min(sal) from emp group by job having job = 'SALESMAN') and job <> 'SALESMAN';
+
+
+
