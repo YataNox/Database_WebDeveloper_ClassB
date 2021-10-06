@@ -35,6 +35,10 @@ select * from dept, emp where emp.deptno = dept.deptno;
 -- 각 사원의 이름, 부서번호, 부서명, 지역을 출력하세요
 select emp.ename, emp.deptno, dept.loc, dept.dname from dept, emp where emp.deptno = dept.deptno;
 
+-- 이름이 scott인 사원의 이름, 부서번호 , 위치 출력
+select emp.ename, emp.deptno, dept.loc, dept.dname from dept, emp
+where emp.deptno = dept.deptno and emp.ename = 'SCOTT';
+-- 컬럼 명 앞에 테이블 명을 기술하여 컬럼의 소속을 명확히 해주어야 오류가 없습니다.
 
 
 
