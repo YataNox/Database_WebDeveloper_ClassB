@@ -12,3 +12,4 @@ insert into customer values(4, '홍길북', 'abc4@abc.com', '010-4234-2234');
 insert into customer values(5, '아무개', 'abc5@abc.com', '010-5234-1234');
 
 select * from customer;
+select * from booklist;
