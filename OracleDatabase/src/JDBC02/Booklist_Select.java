@@ -27,7 +27,7 @@ public class Booklist_Select
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			System.out.println("책번호 \t 제목 \t\t\t 제작년도 \t 가격 \t\t 대여가격 \t 연령");
+			System.out.println("책번호 \t  제작년도 \t 가격 \t\t 대여가격 \t 연령 \t 제목 ");
 			System.out.println("------------------------------------------------------------------------");
 		
 			while(rs.next()) {
@@ -38,7 +38,7 @@ public class Booklist_Select
 				int rentprice = rs.getInt("rentprice");
 				String grade = rs.getString("grade");
 				
-				System.out.printf("%-5d \t\t %-10s \t %-4d \t %6d\t %4d\t %-3s\n", booknum, subject, makeyear, inprice, rentprice, grade);
+				System.out.printf("%-5d \t\t %-4d \t %6d\t %4d\t %-3s\t %-30s\n", booknum, makeyear, inprice, rentprice, grade, subject);
 			}
 		}
 		catch(ClassNotFoundException e) {
