@@ -33,12 +33,12 @@ public class Booklist_Select
 			while(rs.next()) {
 				int booknum = rs.getInt("booknum");
 				String subject = rs.getString("subject");
-				String makeyear = rs.getString("makeyear");
+				int makeyear = rs.getInt("makeyear");
 				int inprice = rs.getInt("inprice");
 				int rentprice = rs.getInt("rentprice");
 				String grade = rs.getString("grade");
 				
-				System.out.printf("%-5d \t\t %-10s \t %-4s \t %6d\t %4d\t %-3s\n", booknum, subject, makeyear, inprice, rentprice, grade);
+				System.out.printf("%-5d \t\t %-10s \t %-4d \t %6d\t %4d\t %-3s\n", booknum, subject, makeyear, inprice, rentprice, grade);
 			}
 		}
 		catch(ClassNotFoundException e) {
