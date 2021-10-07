@@ -19,13 +19,11 @@ public class Booklist_Insert
 		String pw = "tiger";
 		
 		Connection con = null;
-		PreparedStatement pstmt = null; // con에 SQL실행해주는 객체
-		// insert 명령의 경우 결과 값이 따로 없어, ResultSet은 사용하지 않습니다.
+		PreparedStatement pstmt = null;
 		try 
 		{
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, id, pw);
-			//	System.out.println("연결 성공");
 			Scanner sc = new Scanner(System.in);
 			
 			System.out.print("제목을 입력하세요: ");
@@ -39,20 +37,13 @@ public class Booklist_Insert
 			System.out.print("연령을 입력하세요: ");
 			String grade = sc.nextLine();
 			
-			
-			// 요즘 방식
 			String sql = "insert into booklist values(book_seq.nextVal, ?, ?, ?, ?, ?)";
-			// SQL 명령을 먼저 장착하고
 			pstmt = con.prepareStatement(sql);
-			// ? 순서에 맞춰서 해당 데이터를 세팅
 			pstmt.setString(1, subject);
 			pstmt.setInt(2, Integer.parseInt(makeyear));
 			pstmt.setInt(3, Integer.parseInt(inprice));
 			pstmt.setInt(4, Integer.parseInt(rentprice));
 			pstmt.setString(5, grade);
-			
-			// SQL select 명령만 excuteQuery를 사용하고, 나머지는 executeUpdate 메소드를 사용합니다.
-			// executeUpdate의 결과는 SQL 명령이 정상 동작했을 때 1, 실패했을 때 0이 리턴됩니다.
 			
 			int result = pstmt.executeUpdate();
 			if( result == 1)
