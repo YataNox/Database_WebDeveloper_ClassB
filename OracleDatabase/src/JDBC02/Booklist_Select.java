@@ -36,8 +36,8 @@ public class Booklist_Select
 			// pstmt에 담겨진 SQL 명령 실행하고 그 결과를 re에 저장합니다.
 			rs = pstmt.executeQuery();
 			
-			System.out.println("책번호 \t 제목 \t\t\t\t 제작년도 \t 가격 \t\t 대여가격 \t 연령");
-			System.out.println("-----------------------------------------------------");
+			System.out.println("책번호 \t 제목 \t\t\t 제작년도 \t 가격 \t\t 대여가격 \t 연령");
+			System.out.println("------------------------------------------------------------------------");
 		
 			// rs.next() : 최초 실행은 객체의 시작부분(데이터 없는 곳)에서 첫 번째 레코드로 이동하는 메소드
 			// 그 다음부터는 다음 레코드로 이동. 
@@ -53,7 +53,7 @@ public class Booklist_Select
 				int inprice = rs.getInt("inprice");
 				int rentprice = rs.getInt("rentprice");
 				String grade = rs.getString("grade");
-				System.out.printf("%-5d \t\t %-20s \t %-4s \t %6d\t %4d\t %-3s\n", booknum, subject, makeyear, inprice, rentprice, grade);
+				System.out.printf("%-5d \t\t %-10s \t %-4s \t %6d\t %4d\t %-3s\n", booknum, subject, makeyear, inprice, rentprice, grade);
 			}
 			
 			
