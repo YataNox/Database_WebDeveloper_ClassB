@@ -21,16 +21,31 @@ public class Book_Driver
 			if(choice.equals("5"))
 				break;
 			
+			Book_Dao bd = new Book_Dao();
 			switch(choice) {
 				case "1": 
-					// Book_Dao db = new Book_Dao();
-					// db.insert();
+					Book_Dto dbto = new Book_Dto();
+					System.out.print("책제목을 입력하세요 : ");
+					dbto.setSubject(sc.nextLine());
+					System.out.print("입고가격을 입력하세요 : ");
+					dbto.setInprice(Integer.parseInt(sc.nextLine()));
+					System.out.print("대여제목을 입력하세요 : ");
+					dbto.setRentprice(Integer.parseInt(sc.nextLine()));
+					System.out.print("제작년도를 입력하세요 : ");
+					dbto.setMakeyear(Integer.parseInt(sc.nextLine()));
+					System.out.print("등급을 입력하세요 : ");
+					dbto.setGrade(sc.nextLine());
+					int result = bd.insertSql(dbto);
+					
+					if(result == 1)
+						System.out.println("레코드 추가 성공");
+					else
+						System.out.println("레코드 추가 실패");
 					break;
 				case "2":
 					// 데이터 열람 명령이 입력되면, Book_Dao클래스의 객체를 만들고, 그 안의 멤버 메소드 중
 					// 데이터를 모두 조회해서 리턴해줄 수 있는 메소드를 호출합니다.
 					// 그리고 그 리턴된 결과를 화면에 출력합니다.
-					Book_Dao bd = new Book_Dao();
 					ArrayList<Book_Dto> list = bd.selectAll();
 					// 리턴된 list를 화면에 출력
 					System.out.println("책번호 \t  제작년도 \t 가격 \t\t 대여가격 \t 등급 \t 제목 ");
