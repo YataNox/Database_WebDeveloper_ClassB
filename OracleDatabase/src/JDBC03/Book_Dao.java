@@ -19,6 +19,7 @@ public class Book_Dao
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 
+	// db 연결함수
 	public Connection getConnection() 
 	{
 		Connection con = null;
@@ -34,7 +35,8 @@ public class Book_Dao
 		return con;
 	}
 	
-	public void endConnection(Connection con, PreparedStatement pstmt, ResultSet rs) {
+	// db 연결해제
+	public void close() {
 		try {
 			if(con != null)
 				con.close();
@@ -87,12 +89,13 @@ public class Book_Dao
 			e.printStackTrace();
 		}
 		
-		endConnection(con, pstmt, rs);
+		close();
 		
 		// 이후 저장된 레코드들 반환
 		return list;
 	}
 
+	// 레코드 삽입 함수
 	public int insertSql(Book_Dto dbto) {
 		int result = 0;
 		
@@ -113,12 +116,29 @@ public class Book_Dao
 			e.printStackTrace();
 		}
 		
-		/*
-		 * try { if(con != null) con.close(); if(pstmt != null) pstmt.close();
-		 * }catch(SQLException e){ e.printStackTrace(); }
-		 */
-		endConnection(con, pstmt, rs);
+		close();
 		
 		return result;
 	}
+
+	public int deleteSql(String num) 
+	{
+		int result = 0;
+		try {
+			con = getConnection();
+			
+			String sql = "delete from booklist where booknum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(num));
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		return result;
+	}
+
 }
