@@ -141,4 +141,56 @@ public class Book_Dao
 		return result;
 	}
 
+	public Book_Dto getDto(String num) 
+	{
+		Book_Dto bdto = null;
+		con = getConnection();
+		String sql = "select * from booklist where booknum = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(num));
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				bdto = new Book_Dto();
+				
+				bdto.setBooknum(rs.getInt("booknum"));
+				bdto.setSubject(rs.getString("subject"));
+				bdto.setMakeyear(rs.getInt("makeyear"));
+				bdto.setInprice(rs.getInt("inprice"));
+				bdto.setRentprice(rs.getInt("rentprice"));
+				bdto.setGrade(rs.getString("grade"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		close();
+		return bdto;
+	}
+
+	public int update(Book_Dto newDto) {
+		int result = 0;
+		con = getConnection();
+		String sql = "update booklist set subject = ?, makeyear = ?, inprice = ?, rentprice = ?, grade = ?"
+				+ " where booknum = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, newDto.getSubject());
+			pstmt.setInt(2, newDto.getMakeyear());
+			pstmt.setInt(3, newDto.getInprice());
+			pstmt.setInt(4, newDto.getRentprice());
+			pstmt.setString(5, newDto.getGrade());
+			pstmt.setInt(6, newDto.getBooknum());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		return result;
+	}
+
 }
