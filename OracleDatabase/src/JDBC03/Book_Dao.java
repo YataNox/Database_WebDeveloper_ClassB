@@ -50,7 +50,7 @@ public class Book_Dao
 		}
 	}
 	
-	// Booklist 전체 조회 메소드
+	// 전체 조회 sql ----------------------------------------------------------------------------------
 	public ArrayList<Book_Dto> selectAll() 
 	{
 		// 데이터베이스에서 booklist 테이블 조회 후 리턴
@@ -59,7 +59,7 @@ public class Book_Dao
 		try {
 			// db 접속
 			con = getConnection();
-			String sql = "Select * from booklist order by booknum desc";
+			String sql = "Select * from booklist order by booknum";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
@@ -95,7 +95,7 @@ public class Book_Dao
 		return list;
 	}
 
-	// 레코드 삽입 함수
+	// 삽입 sql ----------------------------------------------------------------------------------
 	public int insertSql(Book_Dto dbto) {
 		int result = 0;
 		
@@ -121,6 +121,7 @@ public class Book_Dao
 		return result;
 	}
 
+	// 삭제 sql ----------------------------------------------------------------------------------
 	public int deleteSql(String num) 
 	{
 		int result = 0;
@@ -141,6 +142,7 @@ public class Book_Dao
 		return result;
 	}
 
+	// 특정 필드 조회 sql ----------------------------------------------------------------------------------
 	public Book_Dto getDto(String num) 
 	{
 		Book_Dto bdto = null;
@@ -168,7 +170,8 @@ public class Book_Dao
 		return bdto;
 	}
 
-	public int update(Book_Dto newDto) {
+	// 수정 sql ----------------------------------------------------------------------------------
+	public int updateSql(Book_Dto newDto) {
 		int result = 0;
 		con = getConnection();
 		String sql = "update booklist set subject = ?, makeyear = ?, inprice = ?, rentprice = ?, grade = ?"

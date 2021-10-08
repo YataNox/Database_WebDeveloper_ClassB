@@ -128,7 +128,7 @@ public class Book_Driver
 			newDto.setGrade(grade);
 		
 		// 그리고 bd.update(newDto); 를 실행해서 수정합니다.
-		result = bd.update(newDto);
+		result = bd.updateSql(newDto);
 		
 		if(result == 1)
 			System.out.println("수정 완료");
