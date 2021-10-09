@@ -125,7 +125,7 @@ public class Book_Dao
 	public int deleteSql(String num) 
 	{
 		int result = 0;
-		try {
+		try{
 			con = getConnection();
 			
 			String sql = "delete from booklist where booknum = ?";
@@ -145,7 +145,7 @@ public class Book_Dao
 	// 특정 필드 조회 sql ----------------------------------------------------------------------------------
 	public Book_Dto getDto(String num) 
 	{
-		Book_Dto bdto = null;
+		Book_Dto bdto = null; // Booklist 테이블의 데이터 전송 객체
 		con = getConnection();
 		String sql = "select * from booklist where booknum = ?";
 		

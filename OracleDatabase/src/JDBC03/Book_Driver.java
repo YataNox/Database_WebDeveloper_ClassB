@@ -24,16 +24,16 @@ public class Book_Driver
 			Book_Dao bd = new Book_Dao();
 			switch(choice) {
 				case "1": 
-					insert(sc, bd);
+					insert(sc, bd); // 158 Line
 					break;
 				case "2":
-					select(bd);
+					select(bd); // 140 Line
 					break;
 				case "3":
-					update(sc, bd);
+					update(sc, bd); // 60 Line
 					break;
 				case "4":
-					delete(sc, bd);
+					delete(sc, bd); // 47 Line
 					break;
 				default:
 					System.out.println("잘못 입력된 값입니다.");
@@ -48,7 +48,7 @@ public class Book_Driver
 		// 삭제할 번호를 입력 받고, 그 번호를 전달 인수로 해서 dao의 delete() 메소드를 호출합니다.
 		System.out.print("삭제할 책 번호를 입력하세요 : ");
 		String num = sc.nextLine();
-		int result = bd.deleteSql(num);
+		int result = bd.deleteSql(num); // Book_Dao.java 125Line
 		
 		if(result == 1)
 			System.out.println("레코드 제거 성공");
@@ -72,7 +72,7 @@ public class Book_Driver
 				break;
 		}
 		// 입력받은 도서 번호로 도서를 조회해서 dto객체에 저장해둡니다. 원본 데이터의 로딩
-		Book_Dto oldDto = bd.getDto(num);
+		Book_Dto oldDto = bd.getDto(num); // Book_Dao.java 146 Line
 		
 		// 조회한 번호가 없는 번호이면 해당 도서가 없다고 출력하고 실행종료
 		if(oldDto == null)
@@ -142,7 +142,7 @@ public class Book_Driver
 		// 데이터 열람 명령이 입력되면, Book_Dao클래스의 객체를 만들고, 그 안의 멤버 메소드 중
 		// 데이터를 모두 조회해서 리턴해줄 수 있는 메소드를 호출합니다.
 		// 그리고 그 리턴된 결과를 화면에 출력합니다.
-		ArrayList<Book_Dto> list = bd.selectAll();
+		ArrayList<Book_Dto> list = bd.selectAll(); // Book_Dao.java 54 Line
 		// 리턴된 list를 화면에 출력
 		System.out.println("책번호 \t  제작년도 \t 가격 \t\t 대여가격 \t 등급 \t 제목 ");
 		System.out.println("------------------------------------------------------------------------");
@@ -168,7 +168,9 @@ public class Book_Driver
 		dbto.setMakeyear(Integer.parseInt(sc.nextLine()));
 		System.out.print("등급을 입력하세요 : ");
 		dbto.setGrade(sc.nextLine());
-		int result = bd.insertSql(dbto);
+		
+		// 삽입할 데이터의 정보를 가진 전송객체를 Dao에 전송하여 삽입 후 결과 반환
+		int result = bd.insertSql(dbto); // Book_Dao.java 99 Line
 		
 		if(result == 1)
 			System.out.println("레코드 추가 성공");
