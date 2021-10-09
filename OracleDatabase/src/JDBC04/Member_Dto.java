@@ -4,19 +4,19 @@ import java.util.Date;
 
 public class Member_Dto 
 {
-	private int membernum;
+	private String membernum;
 	private String name;
 	private String phone;
 	private Date birth;
-	private Date joindate = new Date();
+	private Date joindate;
 	private int Bpoint;
 	private String gender;
 	private int age;
 	
-	public int getMembernum() {
+	public String getMembernum() {
 		return membernum;
 	}
-	public void setMembernum(int membernum) {
+	public void setMembernum(String membernum) {
 		this.membernum = membernum;
 	}
 	

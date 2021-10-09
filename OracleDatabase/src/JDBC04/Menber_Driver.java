@@ -1,8 +1,9 @@
 package JDBC04;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import JDBC03.Book_Dao;
+import JDBC03.Book_Dto;
 
 public class Menber_Driver 
 {
@@ -53,6 +54,17 @@ public class Menber_Driver
 
 	// memberlist 조회 함수 - Dao.selectSql 메소드와 연결
 	private static void select(Member_Dao mdao) {
+		ArrayList<Member_Dto> list = mdao.selectAll();
+		
+		System.out.println("회원번호 \t  회원이름 \t\t 핸드폰번호 \t\t 성별\t 나이\t 생일 \t\t\t 가입날짜\t\t 포인트");
+		System.out.println("----------------------------------------------------------------------------------------------------");
+		
+		for(Member_Dto mto : list)
+		{ // list에 있는 값이 하나씩 dto에 저장
+			System.out.printf("%s \t\t %-12s \t %13s\t %s\t %-2d\t %-10s\t %-10s\t %6s\n",
+					mto.getMembernum(), mto.getName(), mto.getPhone(), mto.getGender(), 
+					mto.getAge(), mto.getBirth(), mto.getJoindate(), mto.getBpoint());
+		}
 		
 	}
 	

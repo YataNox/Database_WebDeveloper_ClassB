@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+
+import JDBC03.Book_Dto;
 
 public class Member_Dao 
 {
@@ -55,6 +58,46 @@ public class Member_Dao
 		{
 			ArrayList<Member_Dto> list = new ArrayList<Member_Dto>();
 			
+			try {
+				// db 접속
+				con = getConnection();
+				String sql = "Select * from Memberlist order by membernum";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					// db의 각 필드 값을 저장
+					String membernum = rs.getString("Membernum");
+					String name = rs.getString("name");
+					String phone = rs.getString("phone");
+					Date birth = rs.getDate("birth");
+					Date joindate = rs.getDate("joindate");
+					int bpoint = rs.getInt("bpoint");
+					String gender = rs.getString("gender");
+					int age = rs.getInt("age");
+					
+					// 전송 객체에 값을 저장 후 
+					Member_Dto ddto = new Member_Dto();
+					ddto.setMembernum(membernum);
+					ddto.setName(name);
+					ddto.setPhone(phone);
+					ddto.setBirth(birth);
+					ddto.setJoindate(joindate);
+					ddto.setBpoint(bpoint);
+					ddto.setGender(gender);
+					ddto.setAge(age);
+					
+					// 리턴 리스트에 추가
+					list.add(ddto);
+				}
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			close();
+			
+			// 이후 저장된 레코드들 반환
 			return list;
 		} 
 		// Memberlist 튜플 삽입 함수------------------------------------------------------------------------
