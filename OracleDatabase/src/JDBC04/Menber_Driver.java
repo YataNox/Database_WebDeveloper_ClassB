@@ -61,7 +61,7 @@ public class Menber_Driver
 		
 		for(Member_Dto mto : list)
 		{ // list에 있는 값이 하나씩 dto에 저장
-			System.out.printf("%s \t\t %-12s \t %13s\t %s\t %-2d\t %-10s\t %-10s\t %6s\n",
+			System.out.printf("%s \t\t %-12s \t %13s\t %s\t %-2d\t %-10s\t %-10s\t %-6s\n",
 					mto.getMembernum(), mto.getName(), mto.getPhone(), mto.getGender(), 
 					mto.getAge(), mto.getBirth(), mto.getJoindate(), mto.getBpoint());
 		}
