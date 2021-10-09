@@ -157,3 +157,4 @@ drop table orders2 purge;
 -- purge는 생략 가능
 -- purge가 없이 삭제된 테이블은 나중에 휴지통과 같이 복구가 가능
 -- purge를 사용하면 완전 삭제
+
