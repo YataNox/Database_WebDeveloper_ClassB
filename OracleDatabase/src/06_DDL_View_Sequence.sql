@@ -52,6 +52,8 @@ select * from tabs;
 create sequence member_seq start with 1 increment by 1;
 create sequence rent_seq start with 1 increment by 1;
 
+-- 전체 시퀀스 조회
+SELECT * FROM USER_SEQUENCES ; 
 insert into memberlist(membernum, name, phone) values(book_seq.nextVal, '홍길동','010-1111-2222');
 insert into memberlist(membernum, name, phone) values(book_seq.nextVal, '홍길서','010-3333-4444');
 insert into memberlist(membernum, name, phone) values(book_seq.nextVal, '홍길남','010-5555-6666');
