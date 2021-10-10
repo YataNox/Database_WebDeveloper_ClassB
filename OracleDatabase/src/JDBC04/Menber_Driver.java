@@ -1,9 +1,10 @@
 package JDBC04;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.Scanner;
-
-import JDBC03.Book_Dto;
 
 public class Menber_Driver 
 {
@@ -70,7 +71,44 @@ public class Menber_Driver
 	
 	// memberlist 삽입 함수 - Dao.insertSql 메소드와 연결
 	private static void insert(Scanner sc, Member_Dao mdao) {
+		Member_Dto mdto = new Member_Dto();
+		Date date = null;
 		
+		System.out.print("회원 이름을 입력하세요 : ");
+		mdto.setName(sc.nextLine());
+		
+		System.out.print("핸드폰 번호를 입력하세요 : ");
+		mdto.setPhone(sc.nextLine());
+		
+		System.out.print("생일을 입력하세요 : ");
+		date = Date.valueOf(sc.nextLine());
+		mdto.setBirth(date);
+		
+		System.out.print("가입날짜를 입력하세요 : ");
+		date = Date.valueOf(sc.nextLine());
+		mdto.setJoindate(date);
+		
+		System.out.print("보유 포인트를 입력하세요 : ");
+		mdto.setBpoint(Integer.parseInt(sc.nextLine()));
+		
+		System.out.print("성별을 입력하세요 : ");
+		mdto.setGender(sc.nextLine());
+
+		System.out.print("나이를 입력하세요 : ");
+		mdto.setAge(Integer.parseInt(sc.nextLine()));
+		
+		int result = mdao.insertSql(mdto);
+		
+		if(result == 1)
+			System.out.println("삽입 성공");
+		else
+			System.out.println("삽입 실패");
+
+	}
+
+	private static char[] typeof(Date date) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	// memberlist 삭제 함수 - Dao.deleteSql 메소드와 연결

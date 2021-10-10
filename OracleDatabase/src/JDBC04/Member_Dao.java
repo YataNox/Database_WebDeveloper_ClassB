@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
-
-import JDBC03.Book_Dto;
+import java.sql.Date;
 
 public class Member_Dao 
 {
@@ -103,8 +101,25 @@ public class Member_Dao
 		// Memberlist 튜플 삽입 함수------------------------------------------------------------------------
 		public int insertSql(Member_Dto Mdto) 
 		{
+			int result = 0;
+			con = getConnection();
 			
-			return 0;
+			try {
+				String sql = "insert into memberlist values(member_seq.nextVal, ?, ?, ?, ?, ?, ?, ?)";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, Mdto.getName());
+				pstmt.setString(2, Mdto.getPhone());
+				pstmt.setDate(3, Mdto.getBirth());
+				pstmt.setDate(4, Mdto.getJoindate());
+				pstmt.setInt(5, Mdto.getBpoint());
+				pstmt.setString(6, Mdto.getGender());
+				pstmt.setInt(7, Mdto.getAge());
+				
+				result = pstmt.executeUpdate();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			return result;
 		}
 		// Memberlist 튜플 삭제 함수------------------------------------------------------------------------
 		public int deleteSql(String num) 

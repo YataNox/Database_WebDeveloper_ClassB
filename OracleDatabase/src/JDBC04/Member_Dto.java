@@ -1,6 +1,6 @@
 package JDBC04;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Member_Dto 
 {
@@ -34,14 +34,14 @@ public class Member_Dto
 		this.phone = phone;
 	}
 	
-	public Date getBirth() {
+	public java.sql.Date getBirth() {
 		return birth;
 	}
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 	
-	public Date getJoindate() {
+	public java.sql.Date getJoindate() {
 		return joindate;
 	}
 	public void setJoindate(Date joindate) {
