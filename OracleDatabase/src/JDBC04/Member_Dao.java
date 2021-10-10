@@ -65,7 +65,7 @@ public class Member_Dao
 				
 				while(rs.next()) {
 					// db의 각 필드 값을 저장
-					String membernum = rs.getString("Membernum");
+					int membernum = rs.getInt("Membernum");
 					String name = rs.getString("name");
 					String phone = rs.getString("phone");
 					Date birth = rs.getDate("birth");
@@ -145,15 +145,57 @@ public class Member_Dao
 		public int updateSql(Member_Dto Mdto) 
 		{
 			int result = 0;
+			con = getConnection();
+			String sql = "update memberlist set name=?, phone=?, birth=?, joindate=?,"
+					+ " bpoint=?, gender=?, age=? where membernum=?";
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, Mdto.getName());
+				pstmt.setString(2, Mdto.getPhone());
+				pstmt.setDate(3, Mdto.getBirth());
+				pstmt.setDate(4, Mdto.getJoindate());
+				pstmt.setInt(5, Mdto.getBpoint());
+				pstmt.setString(6, Mdto.getGender());
+				pstmt.setInt(7, Mdto.getAge());
+				pstmt.setInt(8, Mdto.getMembernum());
+				
+				result = pstmt.executeUpdate();
+				
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
 			
+			close();
 			return result;
 		}
 		// Memberlist 전송객체 전달 함수------------------------------------------------------------------------
 		public Member_Dto getDto(String num) 
 		{
-			Member_Dto mdto = null;
+			Member_Dto mdto = new Member_Dto();
+			con = getConnection();
+			String sql = "select * from memberlist where membernum = ?";
+			try {
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(num));
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					mdto.setMembernum(rs.getInt("membernum"));
+					mdto.setName(rs.getString("name"));
+					mdto.setPhone(rs.getString("phone"));
+					mdto.setBirth(rs.getDate("birth"));
+					mdto.setJoindate(rs.getDate("joindate"));
+					mdto.setBpoint(rs.getInt("bpoint"));
+					mdto.setGender(rs.getString("gender"));
+					mdto.setAge(rs.getInt("age"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 			
-			return null;
+			
+			close();
+			return mdto;
 		}
 		
 }

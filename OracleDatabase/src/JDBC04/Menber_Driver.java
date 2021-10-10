@@ -121,6 +121,90 @@ public class Menber_Driver
 	
 	// memberlist 수정 함수 - Dao.updateSql 메소드와 연결
 	private static void update(Scanner sc, Member_Dao mdao) {
+		String num;
+		int result = 0;
 		
+		while(true)
+		{
+			System.out.print("수정할 회원번호를 입력하세요 : ");
+			num = sc.nextLine();
+			if(num.equals(""))
+				System.out.println("회원번호 입력은 필수입니다.");
+			else 
+				break;
+		}
+		
+		Member_Dto oldDto = mdao.getDto(num);
+		
+		if(oldDto == null)
+		{
+			System.out.println("해당 회원이 없습니다.");
+			return;
+		}
+		
+		Member_Dto newDto = new Member_Dto();
+		newDto.setMembernum(oldDto.getMembernum());
+		
+		System.out.print("수정할 이름을 입력하세요 : ");
+		String name = sc.nextLine();
+		if(name.equals(""))
+			newDto.setName(oldDto.getName());
+		else
+			newDto.setName(name);
+		
+		System.out.print("수정할 핸드폰번호를 입력하세요 : ");
+		String phone = sc.nextLine();
+		if(phone.equals(""))
+			newDto.setPhone(oldDto.getPhone());
+		else
+			newDto.setPhone(phone);
+		
+		System.out.print("수정할 생일을 입력하세요 : ");
+		String input = sc.nextLine();
+		if(input.equals(""))
+			newDto.setBirth(oldDto.getBirth());
+		else
+		{
+			Date birth = Date.valueOf(input);
+			newDto.setBirth(birth);
+		}
+
+		System.out.print("수정할 가입날짜를 입력하세요 : ");
+		input = sc.nextLine();
+		if(input.equals(""))
+			newDto.setJoindate(oldDto.getJoindate());
+		else
+		{
+			Date joindate = Date.valueOf(input);
+			newDto.setJoindate(joindate);
+		}
+		
+		System.out.print("수정할 포인트를 입력하세요 : ");
+		String bpoint = sc.nextLine();
+		if(bpoint.equals(""))
+			newDto.setBpoint(oldDto.getBpoint());
+		else
+			newDto.setBpoint(Integer.parseInt(bpoint));
+		
+		System.out.print("수정할 성별을 입력하세요 : ");
+		String gender = sc.nextLine();
+		if(gender.equals(""))
+			newDto.setGender(oldDto.getGender());
+		else
+			newDto.setGender(gender);
+
+		System.out.print("수정할 나이를 입력하세요 : ");
+		String age = sc.nextLine();
+		if(age.equals(""))
+			newDto.setAge(oldDto.getAge());
+		else
+			newDto.setAge(Integer.parseInt(age));
+		
+		result = mdao.updateSql(newDto);
+		
+		if(result == 1)
+			System.out.println("수정 성공");
+		else
+			System.out.println("수정 실패");
 	}
 }
