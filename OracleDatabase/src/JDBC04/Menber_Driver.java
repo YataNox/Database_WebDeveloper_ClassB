@@ -106,14 +106,17 @@ public class Menber_Driver
 
 	}
 
-	private static char[] typeof(Date date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	// memberlist 삭제 함수 - Dao.deleteSql 메소드와 연결
 	private static void delete(Scanner sc, Member_Dao mdao) {
+		System.out.print("삭제할 회원번호를 입력하세요 : ");
+		String membernum = sc.nextLine();
 		
+		int result = mdao.deleteSql(membernum);
+		
+		if(result == 1)
+			System.out.println("삭제 성공");
+		else
+			System.out.println("삭제 실패");
 	}
 	
 	// memberlist 수정 함수 - Dao.updateSql 메소드와 연결

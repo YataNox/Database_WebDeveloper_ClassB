@@ -119,13 +119,26 @@ public class Member_Dao
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
+			
+			close();
 			return result;
 		}
 		// Memberlist 튜플 삭제 함수------------------------------------------------------------------------
 		public int deleteSql(String num) 
 		{
 			int result = 0;
+			con = getConnection();
 			
+			try {
+				String sql = "delete from memberlist where membernum = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(num));
+				result = pstmt.executeUpdate();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			
+			close();
 			return result;
 		}
 		// Memberlist 튜플 수정 함수------------------------------------------------------------------------
