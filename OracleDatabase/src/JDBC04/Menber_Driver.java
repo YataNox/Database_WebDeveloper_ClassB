@@ -93,10 +93,10 @@ public class Menber_Driver
 		}
 		
 		// 입력받은 생일을 기반으로한 나이 기입
-		Calendar d = Calendar.getInstance();
-		Calendar c = Calendar.getInstance();
+		Calendar d = Calendar.getInstance(); // 올해 날짜
+		Calendar c = Calendar.getInstance(); // 생일 날짜
 		c.setTime(date);
-		int age = d.get(Calendar.YEAR)- c.get(Calendar.YEAR) + 1;
+		int age = d.get(Calendar.YEAR)- c.get(Calendar.YEAR) + 1; // 올해 - 생일 +1 = 나이
 		mdto.setAge(age);
 		
 		/* 다른 형태의 Date 입력 utildate -> sqldate 변환
@@ -129,8 +129,19 @@ public class Menber_Driver
 		System.out.print("보유 포인트를 입력하세요 : ");
 		mdto.setBpoint(Integer.parseInt(sc.nextLine()));
 		
-		System.out.print("성별을 입력하세요 : ");
-		mdto.setGender(sc.nextLine());
+		while(true)
+		{
+			System.out.print("성별을 입력하세요 : ");
+			String gender = sc.nextLine();
+			if(gender.equals("M") || gender.equals("F"))
+			{
+				mdto.setGender(gender);
+				break;
+			}
+			else {
+				System.out.println("M(남성) 혹은 F(여성)만 입력 가능합니다.");
+			}
+		}
 		
 		int result = mdao.insertSql(mdto);
 		
@@ -202,7 +213,14 @@ public class Menber_Driver
 		{
 			Date birth = Date.valueOf(input);
 			newDto.setBirth(birth);
+			// 바뀐 생일에 따른 나이 변화
+			Calendar d = Calendar.getInstance(); // 올해 날짜
+			Calendar c = Calendar.getInstance(); // 생일 날짜
+			c.setTime(birth);
+			int age = d.get(Calendar.YEAR)- c.get(Calendar.YEAR) + 1; // 올해 - 생일 +1 = 나이
+			newDto.setAge(age);
 		}
+		
 
 		System.out.print("수정할 가입날짜를 입력하세요 : ");
 		input = sc.nextLine();
@@ -227,13 +245,6 @@ public class Menber_Driver
 			newDto.setGender(oldDto.getGender());
 		else
 			newDto.setGender(gender);
-
-		System.out.print("수정할 나이를 입력하세요 : ");
-		String age = sc.nextLine();
-		if(age.equals(""))
-			newDto.setAge(oldDto.getAge());
-		else
-			newDto.setAge(Integer.parseInt(age));
 		
 		result = mdao.updateSql(newDto);
 		
