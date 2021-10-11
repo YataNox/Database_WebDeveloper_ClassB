@@ -55,7 +55,7 @@ public class Menber_Driver
 	private static void select(Member_Dao mdao) {
 		ArrayList<Member_Dto> list = mdao.selectAll();
 		
-		System.out.println("회원번호 \t  회원이름 \t\t 핸드폰번호 \t\t 성별\t 나이\t 생일 \t\t\t 가입날짜\t\t 포인트");
+		System.out.println("회원번호 \t  회원이름 \t\t 핸드폰번호 \t\t\t 성별\t 나이\t 생일 \t\t\t 가입날짜\t\t 포인트");
 		System.out.println("----------------------------------------------------------------------------------------------------");
 		
 		for(Member_Dto mto : list)
