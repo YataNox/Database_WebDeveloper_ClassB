@@ -1,8 +1,10 @@
 package JDBC04;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.sql.Date;
 import java.util.Scanner;
 
 public class Menber_Driver 
@@ -113,18 +115,22 @@ public class Menber_Driver
 		  	java.sql.Date birth = new java.sql.Date(d.getTime());
 		  	pdto.setBirth(birth);
 		 */
+
+		String s = d.get(Calendar.YEAR) + "-" + (d.get(Calendar.MONTH)+1) + "-" + d.get(Calendar.DATE);
+		Date sysdate = Date.valueOf(s);
+		mdto.setJoindate(sysdate);
 		
-		System.out.print("가입날짜를 입력하세요 : ");
-		while(true) {
-			try {
-				date = Date.valueOf(sc.nextLine());
-				mdto.setJoindate(date);
-				break;
-			}catch(IllegalArgumentException e)
-			{
-				System.out.print("날짜형식을 지켜주세요. (YYYY-MM-DD) : ");
-			}
-		}
+		//	System.out.print("가입날짜를 입력하세요 : ");
+		//	while(true) {
+		//		try {
+		//			date = Date.valueOf(sc.nextLine());
+		//			mdto.setJoindate(date);
+		//			break;
+		//		}catch(IllegalArgumentException e)
+		//		{
+		//			System.out.print("날짜형식을 지켜주세요. (YYYY-MM-DD) : ");
+		//		}
+		//	}	
 		
 		System.out.print("보유 포인트를 입력하세요 : ");
 		mdto.setBpoint(Integer.parseInt(sc.nextLine()));
