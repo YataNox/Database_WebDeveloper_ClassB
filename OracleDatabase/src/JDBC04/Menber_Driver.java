@@ -1,6 +1,7 @@
 package JDBC04;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.sql.Date;
 import java.util.Scanner;
 
@@ -89,6 +90,13 @@ public class Menber_Driver
 			return;
 		}
 		
+		// 입력받은 생일을 기반으로한 나이 기입
+		Calendar d = Calendar.getInstance();
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		int age = d.get(Calendar.YEAR)- c.get(Calendar.YEAR) + 1;
+		mdto.setAge(age);
+		
 		/*
 		  	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		  	java.util.Date d = null;
@@ -120,9 +128,6 @@ public class Menber_Driver
 		
 		System.out.print("성별을 입력하세요 : ");
 		mdto.setGender(sc.nextLine());
-
-		System.out.print("나이를 입력하세요 : ");
-		mdto.setAge(Integer.parseInt(sc.nextLine()));
 		
 		int result = mdao.insertSql(mdto);
 		
