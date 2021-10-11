@@ -124,6 +124,21 @@ public class Member_Dao
 				pstmt.setInt(1, Integer.parseInt(num));
 				
 				result = pstmt.executeUpdate();
+				
+				sql = "drop sequence member_seq";
+				pstmt = con.prepareStatement(sql);
+				pstmt.executeUpdate();
+				
+				sql = "select max(membernum) as membernum from memberlist";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					sql = "create sequence member_seq start with " + (rs.getInt("membernum")+1) + 
+							"increment by 1";
+					pstmt = con.prepareStatement(sql);
+					pstmt.execute();
+				}
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
