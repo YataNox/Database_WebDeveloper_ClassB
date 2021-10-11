@@ -55,10 +55,10 @@ public class Member_Dao
 		public ArrayList<Member_Dto> selectAll() 
 		{
 			ArrayList<Member_Dto> list = new ArrayList<Member_Dto>();
+			// db 접속
+			con = getConnection();
 			
-			try {
-				// db 접속
-				con = getConnection();
+			try {	
 				String sql = "Select * from Memberlist order by membernum";
 				pstmt = con.prepareStatement(sql);
 				rs = pstmt.executeQuery();
@@ -89,7 +89,7 @@ public class Member_Dao
 					list.add(ddto);
 				}
 				
-			}catch(Exception e) {
+			}catch(SQLException e) {
 				e.printStackTrace();
 			}
 			
