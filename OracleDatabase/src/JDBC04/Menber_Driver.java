@@ -89,6 +89,21 @@ public class Menber_Driver
 			return;
 		}
 		
+		/*
+		  	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		  	java.util.Date d = null;
+		  	while(true){
+		  		try{
+		  			d = sdf.parse(sc.nextLine());
+		  			break;
+		  		}catch(ParseException e){
+		  			e.printStackTrace();
+		  		}
+		  	}
+		  	java.sql.Date birth = new java.sql.Date(d.getTime());
+		  	pdto.setBirth(birth);
+		 */
+		
 		System.out.print("가입날짜를 입력하세요 : ");
 		try {
 			date = Date.valueOf(sc.nextLine());
