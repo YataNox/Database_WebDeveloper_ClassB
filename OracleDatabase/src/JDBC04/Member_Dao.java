@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.sql.Date;
 
 public class Member_Dao 
 {
@@ -114,7 +113,7 @@ public class Member_Dao
 			return result;
 		}
 		// Memberlist 튜플 삭제 함수------------------------------------------------------------------------
-		public int deleteSql(String num) 
+		public int deleteSql(String num)
 		{
 			int result = 0;
 			con = getConnection();
@@ -133,7 +132,7 @@ public class Member_Dao
 			return result;
 		}
 		// Memberlist 튜플 수정 함수------------------------------------------------------------------------
-		public int updateSql(Member_Dto Mdto)
+		public int updateSql(Member_Dto Mdto) 
 		{
 			int result = 0;
 			con = getConnection();
