@@ -79,12 +79,26 @@ public class Menber_Driver
 		mdto.setPhone(sc.nextLine());
 		
 		System.out.print("생일을 입력하세요 : ");
-		date = Date.valueOf(sc.nextLine());
-		mdto.setBirth(date);
+		try {
+			date = Date.valueOf(sc.nextLine());
+			mdto.setBirth(date);
+		}catch(IllegalArgumentException e)
+		{
+			System.out.println("날짜형식을 지켜주세요. (YYYY-MM-DD)");
+			System.out.println("메인으로 돌아갑니다.");
+			return;
+		}
 		
 		System.out.print("가입날짜를 입력하세요 : ");
-		date = Date.valueOf(sc.nextLine());
-		mdto.setJoindate(date);
+		try {
+			date = Date.valueOf(sc.nextLine());
+			mdto.setJoindate(date);
+		}catch(IllegalArgumentException e)
+		{
+			System.out.println("날짜형식을 지켜주세요. (YYYY-MM-DD)");
+			System.out.println("메인으로 돌아갑니다.");
+			return;
+		}
 		
 		System.out.print("보유 포인트를 입력하세요 : ");
 		mdto.setBpoint(Integer.parseInt(sc.nextLine()));
