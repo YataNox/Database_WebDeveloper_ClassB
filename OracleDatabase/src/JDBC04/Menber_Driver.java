@@ -1,7 +1,5 @@
 package JDBC04;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
