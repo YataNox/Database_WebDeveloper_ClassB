@@ -214,7 +214,10 @@ public class Menber_Driver
 		System.out.print("수정할 생일을 입력하세요 : ");
 		String input = sc.nextLine();
 		if(input.equals(""))
+		{
 			newDto.setBirth(oldDto.getBirth());
+			newDto.setAge(oldDto.getAge());
+		}
 		else
 		{
 			Date birth = Date.valueOf(input);
