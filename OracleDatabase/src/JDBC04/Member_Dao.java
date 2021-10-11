@@ -64,26 +64,16 @@ public class Member_Dao
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
-					// db의 각 필드 값을 저장
-					int membernum = rs.getInt("Membernum");
-					String name = rs.getString("name");
-					String phone = rs.getString("phone");
-					Date birth = rs.getDate("birth");
-					Date joindate = rs.getDate("joindate");
-					int bpoint = rs.getInt("bpoint");
-					String gender = rs.getString("gender");
-					int age = rs.getInt("age");
-					
 					// 전송 객체에 값을 저장 후 
 					Member_Dto ddto = new Member_Dto();
-					ddto.setMembernum(membernum);
-					ddto.setName(name);
-					ddto.setPhone(phone);
-					ddto.setBirth(birth);
-					ddto.setJoindate(joindate);
-					ddto.setBpoint(bpoint);
-					ddto.setGender(gender);
-					ddto.setAge(age);
+					ddto.setMembernum(rs.getInt("Membernum"));
+					ddto.setName(rs.getString("name"));
+					ddto.setPhone(rs.getString("phone"));
+					ddto.setBirth(rs.getDate("birth"));
+					ddto.setJoindate(rs.getDate("joindate"));
+					ddto.setBpoint(rs.getInt("bpoint"));
+					ddto.setGender(rs.getString("gender"));
+					ddto.setAge(rs.getInt("age"));
 					
 					// 리턴 리스트에 추가
 					list.add(ddto);
