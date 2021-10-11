@@ -80,14 +80,16 @@ public class Menber_Driver
 		mdto.setPhone(sc.nextLine());
 		
 		System.out.print("생일을 입력하세요 : ");
-		try {
-			date = Date.valueOf(sc.nextLine());
-			mdto.setBirth(date);
-		}catch(IllegalArgumentException e)
+		while(true)
 		{
-			System.out.println("날짜형식을 지켜주세요. (YYYY-MM-DD)");
-			System.out.println("메인으로 돌아갑니다.");
-			return;
+			try {
+				date = Date.valueOf(sc.nextLine());
+				mdto.setBirth(date);
+				break;
+			}catch(IllegalArgumentException e)
+			{
+				System.out.print("날짜형식을 지켜주세요. (YYYY-MM-DD) : ");
+			}
 		}
 		
 		// 입력받은 생일을 기반으로한 나이 기입
@@ -97,7 +99,7 @@ public class Menber_Driver
 		int age = d.get(Calendar.YEAR)- c.get(Calendar.YEAR) + 1;
 		mdto.setAge(age);
 		
-		/*
+		/* 다른 형태의 Date 입력 utildate -> sqldate 변환
 		  	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		  	java.util.Date d = null;
 		  	while(true){
@@ -113,14 +115,15 @@ public class Menber_Driver
 		 */
 		
 		System.out.print("가입날짜를 입력하세요 : ");
-		try {
-			date = Date.valueOf(sc.nextLine());
-			mdto.setJoindate(date);
-		}catch(IllegalArgumentException e)
-		{
-			System.out.println("날짜형식을 지켜주세요. (YYYY-MM-DD)");
-			System.out.println("메인으로 돌아갑니다.");
-			return;
+		while(true) {
+			try {
+				date = Date.valueOf(sc.nextLine());
+				mdto.setJoindate(date);
+				break;
+			}catch(IllegalArgumentException e)
+			{
+				System.out.print("날짜형식을 지켜주세요. (YYYY-MM-DD) : ");
+			}
 		}
 		
 		System.out.print("보유 포인트를 입력하세요 : ");
