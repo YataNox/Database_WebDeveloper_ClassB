@@ -227,16 +227,7 @@ public class Menber_Driver
 			newDto.setAge(age);
 		}
 		
-
-		System.out.print("수정할 가입날짜를 입력하세요 : ");
-		input = sc.nextLine();
-		if(input.equals(""))
-			newDto.setJoindate(oldDto.getJoindate());
-		else
-		{
-			Date joindate = Date.valueOf(input);
-			newDto.setJoindate(joindate);
-		}
+		newDto.setJoindate(oldDto.getJoindate());
 		
 		System.out.print("수정할 포인트를 입력하세요 : ");
 		String bpoint = sc.nextLine();
