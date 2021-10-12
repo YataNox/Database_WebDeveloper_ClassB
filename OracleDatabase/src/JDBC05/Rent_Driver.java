@@ -94,14 +94,14 @@ public class Rent_Driver
 		Rent_Dto new_Rdto = new Rent_Dto();
 		new_Rdto.setNumseq(old_Rdto.getNumseq());
 		
-		System.out.println("수정할 날짜를 입력하세요. : ");
+		System.out.print("수정할 날짜를 입력하세요. : ");
 		String rentdate = sc.nextLine();
 		if(rentdate.equals(""))
 			new_Rdto.setRentdate(old_Rdto.getRentdate());
 		else
 			new_Rdto.setRentdate(rentdate);
 		
-		System.out.println("수정할 도서번호를 입력하세요 : ");
+		System.out.print("수정할 도서번호를 입력하세요 : ");
 		String booknum;
 		while(true) {
 			booknum = sc.nextLine();
@@ -114,7 +114,7 @@ public class Rent_Driver
 			{
 				String bn = Rdao.confirmBn(booknum); // 입력한 도서 번호로 조회
 				if(bn == null)
-					System.out.println("해당 도서가 없습니다. 다시 입력해주세요.");
+					System.out.print("해당 도서가 없습니다. 다시 입력해주세요. : ");
 				else {
 					new_Rdto.setBooknum(Integer.parseInt(booknum));
 					break;
@@ -123,7 +123,7 @@ public class Rent_Driver
 				
 		}
 		
-		System.out.println("수정할 회원번호를 입력하세요 : ");
+		System.out.print("수정할 회원번호를 입력하세요 : ");
 		String membernum;
 		while(true) {
 			membernum = sc.nextLine();
@@ -136,14 +136,14 @@ public class Rent_Driver
 			{
 				String mn = Rdao.confirmMn(membernum); // 입력한 도서 번호로 조회
 				if(mn == null)
-					System.out.println("해당 회원가 없습니다. 다시 입력해주세요.");
+					System.out.print("해당 회원가 없습니다. 다시 입력해주세요. : ");
 				else {
 					new_Rdto.setMembernum(Integer.parseInt(membernum));
 					break;
 				}
 			}
 		}
-		System.out.println("수정할 할인금액을 입력하세요 : ");
+		System.out.print("수정할 할인금액을 입력하세요 : ");
 		String discount = sc.nextLine();
 		if(discount.equals(""))
 			new_Rdto.setDiscount(old_Rdto.getDiscount());
