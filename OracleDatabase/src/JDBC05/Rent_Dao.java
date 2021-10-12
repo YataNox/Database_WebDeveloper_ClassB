@@ -75,5 +75,56 @@ public class Rent_Dao
 		dbm.close(con, pstmt, rs);
 		return result;
 	}
+
+	public Rent_Dto getDto(String num) {
+		Rent_Dto rdto = new Rent_Dto();
+		con = dbm.getConnection();
+		
+		String sql = "select to_char(rentdate, 'YYYY-MM-DD') as rn, numseq, booknum, membernum, discount "
+				+ "from rentlist where numseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(num));
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				rdto.setRentdate(rs.getString("rn"));
+				rdto.setNumseq(rs.getInt("numseq"));
+				rdto.setBooknum(rs.getInt("booknum"));
+				rdto.setMembernum(rs.getInt("membernum"));
+				rdto.setDiscount(rs.getInt("discount"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbm.close(con, pstmt, rs);
+		return rdto;
+	}
+
+	public int updateSql(Rent_Dto new_Rdto) {
+		int result = 0;
+		con = dbm.getConnection();
+		
+		String sql = "update rentlist set rentdate = to_date(''||?||'', 'yyyy-MM-dd'), numseq = ?,"
+				+ " booknum = ?, membernum = ?,  discount = ? where numseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, new_Rdto.getRentdate());
+			pstmt.setInt(2, new_Rdto.getNumseq());
+			pstmt.setInt(3, new_Rdto.getBooknum());
+			pstmt.setInt(4, new_Rdto.getMembernum());
+			pstmt.setInt(5, new_Rdto.getDiscount());
+			pstmt.setInt(6, new_Rdto.getNumseq());
+			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbm.close(con, pstmt, rs);
+		return result;
+	}
 		
 }

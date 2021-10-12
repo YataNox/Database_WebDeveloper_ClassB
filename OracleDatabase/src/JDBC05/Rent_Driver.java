@@ -56,12 +56,70 @@ public class Rent_Driver
 		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
 		Rent_Dao Rdao = Rent_Dao.getInstance();
 		
+		
 	}
 
 	private static void update(Scanner sc) {
 		// Rent_Dao를 공유해서 쓰는 방법 #2
 		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
 		Rent_Dao Rdao = Rent_Dao.getInstance();
+		String num;
+		int result = 0;
+		
+		while(true)
+		{
+			System.out.print("수정할 대여순번을 입력하세요 : ");
+			num = sc.nextLine();
+			if(num.equals(""))
+				System.out.println("대여순번 입력은 필수입니다.");
+			else 
+				break;
+		}
+		
+		Rent_Dto old_Rdto = Rdao.getDto(num);
+		
+		if(old_Rdto == null) {
+			System.out.println("해당 순번이 없습니다.");
+			return;
+		}
+		
+		Rent_Dto new_Rdto = new Rent_Dto();
+		new_Rdto.setNumseq(old_Rdto.getNumseq());
+		
+		System.out.println("수정할 날짜를 입력하세요. : ");
+		String rentdate = sc.nextLine();
+		if(rentdate.equals(""))
+			new_Rdto.setRentdate(old_Rdto.getRentdate());
+		else
+			new_Rdto.setRentdate(rentdate);
+		
+		System.out.println("수정할 도서번호를 입력하세요 : ");
+		String booknum = sc.nextLine();
+		if(booknum.equals(""))
+			new_Rdto.setBooknum(old_Rdto.getBooknum());
+		else
+			new_Rdto.setBooknum(Integer.parseInt(booknum));
+		
+		System.out.println("수정할 회원번호를 입력하세요 : ");
+		String membernum = sc.nextLine();
+		if(membernum.equals(""))
+			new_Rdto.setMembernum(old_Rdto.getMembernum());
+		else
+			new_Rdto.setMembernum(Integer.parseInt(membernum));
+		
+		System.out.println("수정할 할인금액을 입력하세요 : ");
+		String discount = sc.nextLine();
+		if(discount.equals(""))
+			new_Rdto.setDiscount(old_Rdto.getDiscount());
+		else
+			new_Rdto.setDiscount(Integer.parseInt(discount));
+		
+		result = Rdao.updateSql(new_Rdto);
+		
+		if(result == 1) 
+			System.out.println("수정완료");
+		else
+			System.out.println("수정실패");
 		
 	}
 
