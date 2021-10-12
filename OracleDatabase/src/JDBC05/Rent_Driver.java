@@ -1,5 +1,7 @@
 package JDBC05;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -46,10 +48,9 @@ public class Rent_Driver
 				default:
 					System.out.println("잘못 입력된 값입니다.");
 			}
-			
-			System.out.println("프로그램 종료");
-			sc.close();
 		}
+		System.out.println("프로그램 종료");
+		sc.close();
 	}
 
 	private static void delete(Scanner sc) {
@@ -86,7 +87,38 @@ public class Rent_Driver
 		// Rent_Dao를 공유해서 쓰는 방법 #2
 		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
 		Rent_Dao Rdao = Rent_Dao.getInstance();
+		Rent_Dto Rdto = new Rent_Dto();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		while (true) {
+			System.out.print("입력할 대여날짜를 입력하세요 : ");
+			String rentdate = sc.nextLine();
+			try {
+				sdf.parse(rentdate);
+				Rdto.setRentdate(rentdate);
+				break;
+			} catch (ParseException e) {
+				System.out.print("형식을 맞춰 입력하세요.(2000-12-31) : ");
+			}
+		}
 		
+		System.out.print("입력할 대여순번을 입력하세요 : ");
+		Rdto.setNumseq(Integer.parseInt(sc.nextLine()));
+		
+		System.out.print("입력할 도서번호를 입력하세요 : ");
+		Rdto.setBooknum(Integer.parseInt(sc.nextLine()));
+				
+		System.out.print("입력할 회원번호를 입력하세요 : ");
+		Rdto.setMembernum(Integer.parseInt(sc.nextLine()));
+				
+		System.out.print("입력할 할인금액을 입력하세요 : ");
+		Rdto.setDiscount(Integer.parseInt(sc.nextLine()));
+		
+		int result = Rdao.insertSql(Rdto);
+		
+		if(result == 1)
+			System.out.println("삽입성공");
+		else
+			System.out.println("삽입실패");
 	}
 	
 }

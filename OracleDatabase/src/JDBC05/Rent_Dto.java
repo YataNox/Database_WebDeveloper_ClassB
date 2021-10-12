@@ -1,19 +1,17 @@
 package JDBC05;
 
-import java.sql.Date;
-
 public class Rent_Dto 
 {
-	private Date rentdate;
+	private String rentdate;
 	private int numseq;
 	private int booknum;
 	private int membernum;
 	private int discount;
 	
-	public Date getRentdate() {
+	public String getRentdate() {
 		return rentdate;
 	}
-	public void setRentdate(Date rentdate) {
+	public void setRentdate(String rentdate) {
 		this.rentdate = rentdate;
 	}
 	public int getNumseq() {
