@@ -1,8 +1,7 @@
 package JDBC05;
 
+import java.util.ArrayList;
 import java.util.Scanner;
-
-import JDBC04.Member_Dao;
 
 public class Rent_Driver 
 {
@@ -25,43 +24,68 @@ public class Rent_Driver
 			if(choice.equals("5"))
 				break;
 			
+			// Rent_Dao를 공유해서 쓰는 방법 #1
+			// Driver Class에서 객체를 생성하고 각 메소드에 전달인수로 전달
 			// 공통적으로 사용할 멤버 접속 객체
-			Rent_Dao Rdao = new Rent_Dao();
+			//Rent_Dao Rdao = Rent_Dao.getInstance();
 			
 			// 입력한 번호에 따른 기능 실행
 			switch(choice) {
 				case "1": 
-					insert(sc, Rdao); // 158 Line
+					insert(sc); // 158 Line
 					break;
 				case "2":
-					select(Rdao); // 140 Line
+					select(); // 140 Line
 					break;
 				case "3":
-					update(sc, Rdao); // 60 Line
+					update(sc); // 60 Line
 					break;
 				case "4":
-					delete(sc, Rdao); // 47 Line
+					delete(sc); // 47 Line
 					break;
 				default:
 					System.out.println("잘못 입력된 값입니다.");
 			}
+			
+			System.out.println("프로그램 종료");
+			sc.close();
 		}
 	}
 
-	private static void delete(Scanner sc, Rent_Dao rdao) {
+	private static void delete(Scanner sc) {
+		// Rent_Dao를 공유해서 쓰는 방법 #2
+		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
+		Rent_Dao Rdao = Rent_Dao.getInstance();
 		
 	}
 
-	private static void update(Scanner sc, Rent_Dao rdao) {
+	private static void update(Scanner sc) {
+		// Rent_Dao를 공유해서 쓰는 방법 #2
+		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
+		Rent_Dao Rdao = Rent_Dao.getInstance();
 		
 	}
 
-	private static void select(Rent_Dao rdao) {
+	private static void select() {
+		// Rent_Dao를 공유해서 쓰는 방법 #2
+		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
+		Rent_Dao Rdao = Rent_Dao.getInstance();
+		ArrayList<Rent_Dto> list = Rdao.selectAll();
 		
+		System.out.println("대여날짜\t\t 대여순번 \t 도서번호 \t 회원번호 \t 할인금액");
+		System.out.println("--------------------------------------------------------------------");
+		
+		for(Rent_Dto rdto : list) {
+			System.out.printf("%s \t %-3d \t\t %d \t\t %d \t\t %d\n", rdto.getRentdate(),
+					rdto.getNumseq(), rdto.getBooknum(), rdto.getMembernum(), rdto.getDiscount());
+		}
 		
 	}
 
-	private static void insert(Scanner sc, Rent_Dao rdao) {
+	private static void insert(Scanner sc) {
+		// Rent_Dao를 공유해서 쓰는 방법 #2
+		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
+		Rent_Dao Rdao = Rent_Dao.getInstance();
 		
 	}
 	
