@@ -159,5 +159,15 @@ public class Rent_Dao
 		dbm.close(con, pstmt, rs);
 		return result;
 	}
+
+	public String confirmBn(String booknum) {
+		
+		return null;
+	}
+
+	public String confirmMn(String membernum) {
+		
+		return null;
+	}
 		
 }

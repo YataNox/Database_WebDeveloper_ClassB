@@ -102,19 +102,47 @@ public class Rent_Driver
 			new_Rdto.setRentdate(rentdate);
 		
 		System.out.println("수정할 도서번호를 입력하세요 : ");
-		String booknum = sc.nextLine();
-		if(booknum.equals(""))
-			new_Rdto.setBooknum(old_Rdto.getBooknum());
-		else
-			new_Rdto.setBooknum(Integer.parseInt(booknum));
+		String booknum;
+		while(true) {
+			booknum = sc.nextLine();
+			if(booknum.equals(""))
+			{
+				new_Rdto.setBooknum(old_Rdto.getBooknum());
+				break;
+			}
+			else 
+			{
+				String bn = Rdao.confirmBn(booknum); // 입력한 도서 번호로 조회
+				if(bn == null)
+					System.out.println("해당 도서가 없습니다. 다시 입력해주세요.");
+				else {
+					new_Rdto.setBooknum(Integer.parseInt(booknum));
+					break;
+				}
+			}
+				
+		}
 		
 		System.out.println("수정할 회원번호를 입력하세요 : ");
-		String membernum = sc.nextLine();
-		if(membernum.equals(""))
-			new_Rdto.setMembernum(old_Rdto.getMembernum());
-		else
-			new_Rdto.setMembernum(Integer.parseInt(membernum));
-		
+		String membernum;
+		while(true) {
+			membernum = sc.nextLine();
+			if(membernum.equals(""))
+			{
+				new_Rdto.setMembernum(old_Rdto.getMembernum());
+				break;
+			}
+			else 
+			{
+				String mn = Rdao.confirmMn(membernum); // 입력한 도서 번호로 조회
+				if(mn == null)
+					System.out.println("해당 회원가 없습니다. 다시 입력해주세요.");
+				else {
+					new_Rdto.setMembernum(Integer.parseInt(membernum));
+					break;
+				}
+			}
+		}
 		System.out.println("수정할 할인금액을 입력하세요 : ");
 		String discount = sc.nextLine();
 		if(discount.equals(""))
