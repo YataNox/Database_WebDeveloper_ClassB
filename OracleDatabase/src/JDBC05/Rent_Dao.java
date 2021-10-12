@@ -161,13 +161,41 @@ public class Rent_Dao
 	}
 
 	public String confirmBn(String booknum) {
+		con = dbm.getConnection();
+		String bn = null;
+		String sql = "select * from booklist where booknum = ?";
 		
-		return null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(booknum));
+			rs= pstmt.executeQuery();
+			if(rs.next())
+				bn = rs.getInt("booknum") + ""; // 기타데이터에 + ""가 연산되면 결과는 String입니다.
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbm.close(con, pstmt, rs);
+		return bn;
 	}
 
 	public String confirmMn(String membernum) {
+		con = dbm.getConnection();
+		String mn = null;
+		String sql = "select * from memberlist where membernum = ?";
 		
-		return null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(membernum));
+			rs= pstmt.executeQuery();
+			if(rs.next())
+				mn = rs.getInt("membernum") + ""; // 기타데이터에 + ""가 연산되면 결과는 String입니다.
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbm.close(con, pstmt, rs);
+		return mn;
 	}
 		
 }
