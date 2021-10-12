@@ -1,7 +1,6 @@
 package JDBC05;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -119,6 +118,40 @@ public class Rent_Dao
 			pstmt.setInt(5, new_Rdto.getDiscount());
 			pstmt.setInt(6, new_Rdto.getNumseq());
 			result = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbm.close(con, pstmt, rs);
+		return result;
+	}
+
+	public int deleteSql(String numseq) {
+		int result = 0;
+		con = dbm.getConnection();
+		
+		String sql = "delete from rentlist where numseq = ?";
+		
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(numseq));
+			result = pstmt.executeUpdate();
+			
+			sql = "drop sequence rent_seq";
+			pstmt = con.prepareStatement(sql);
+			pstmt.executeUpdate();
+			
+			sql = "select max(numseq) as numseq from rentlist";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				sql = "create sequence rent_seq start with " + (rs.getInt("numseq")+1) + 
+						"increment by 1";
+				pstmt = con.prepareStatement(sql);
+				pstmt.execute();
+			}
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}

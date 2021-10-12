@@ -55,7 +55,15 @@ public class Rent_Driver
 		// Rent_Dao를 공유해서 쓰는 방법 #2
 		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
 		Rent_Dao Rdao = Rent_Dao.getInstance();
+		System.out.print("삭제할 대여순번를 입력하세요 : ");
+		String numseq =  sc.nextLine();
 		
+		int result = Rdao.deleteSql(numseq);
+		
+		if(result == 1)
+			System.out.println("삭제 성공");
+		else
+			System.out.println("삭제 실패");
 		
 	}
 
