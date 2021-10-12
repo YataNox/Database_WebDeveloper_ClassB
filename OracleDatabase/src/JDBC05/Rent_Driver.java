@@ -1,7 +1,5 @@
 package JDBC05;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -88,21 +86,9 @@ public class Rent_Driver
 		// Rent_Dao를 Singleton 방식으로 구현하여 쓰는 방법
 		Rent_Dao Rdao = Rent_Dao.getInstance();
 		Rent_Dto Rdto = new Rent_Dto();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		while (true) {
-			System.out.print("입력할 대여날짜를 입력하세요 : ");
-			String rentdate = sc.nextLine();
-			try {
-				sdf.parse(rentdate);
-				Rdto.setRentdate(rentdate);
-				break;
-			} catch (ParseException e) {
-				System.out.print("형식을 맞춰 입력하세요.(2000-12-31) : ");
-			}
-		}
 		
-		System.out.print("입력할 대여순번을 입력하세요 : ");
-		Rdto.setNumseq(Integer.parseInt(sc.nextLine()));
+		System.out.print("입력할 대여날짜를 입력하세요 : ");
+		Rdto.setRentdate(sc.nextLine());
 		
 		System.out.print("입력할 도서번호를 입력하세요 : ");
 		Rdto.setBooknum(Integer.parseInt(sc.nextLine()));

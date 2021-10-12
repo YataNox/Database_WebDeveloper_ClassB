@@ -28,7 +28,7 @@ public class Rent_Dao
 	public ArrayList<Rent_Dto> selectAll() {
 		ArrayList<Rent_Dto> list = new ArrayList<Rent_Dto>();
 		con = dbm.getConnection();
-		String sql = "select to_char(rentdate, 'YYYY-MM-DD') as rn, numseq, booknum, membernum, discount from rentlist order by rentdate";
+		String sql = "select to_char(rentdate, 'YYYY-MM-DD') as rn, numseq, booknum, membernum, discount from rentlist order by numseq";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -57,15 +57,15 @@ public class Rent_Dao
 		int result = 0;
 		con = dbm.getConnection();
 		
-		String sql = "insert into rentlist values(?, ?, ?, ?, ?)";
+		String sql = "insert into rentlist(rentdate, numseq, booknum, membernum, discount)"
+				+ "values(to_date(''||?||'', 'yyyy-MM-dd'), rent_seq.nextVal, ?, ?, ?)";
 		
 		try {
 			pstmt = con.prepareStatement(sql);
-			pstmt.setDate(1, Date.valueOf(rdto.getRentdate()));
-			pstmt.setInt(2, rdto.getNumseq());
-			pstmt.setInt(3, rdto.getBooknum());
-			pstmt.setInt(4, rdto.getMembernum());
-			pstmt.setInt(5, rdto.getDiscount());
+			pstmt.setString(1, rdto.getRentdate());
+			pstmt.setInt(2, rdto.getBooknum());
+			pstmt.setInt(3, rdto.getMembernum());
+			pstmt.setInt(4, rdto.getDiscount());
 			
 			result = pstmt.executeUpdate();
 		}catch(SQLException e){
