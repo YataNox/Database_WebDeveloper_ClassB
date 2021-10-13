@@ -200,5 +200,4 @@ public class Rent_Driver
 		else
 			System.out.println("삽입실패");
 	}
-	
 }
